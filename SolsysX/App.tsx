@@ -13,12 +13,17 @@ import {
   ImageBackground,
   TouchableOpacity
 } from 'react-native';
+import MyNavigator from './navigator/navigator';
 import Start from './screens/start';
+import LogIn from './screens/logIn';
+import Signup from './screens/signup';
+
+
 
 function App(): JSX.Element {
 
   return (
-    <Start/>
+    <MyNavigator/>
   );
 }
 
