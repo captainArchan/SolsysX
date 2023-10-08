@@ -12,13 +12,14 @@ import HomePage from "../screens/HomePage";
 import PlanetSpin from "../screens/PlanetSpin";
 import Favorite from "../screens/FavoritePage";
 import Game from "../screens/GamePage";
+import Profile from "../screens/ProfilePage";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function TabNavigator(){
     return(
-        <Tab.Navigator initialRouteName="Home" screenOptions={{tabBarStyle: {backgroundColor:'#5C469C'}}}>
+        <Tab.Navigator initialRouteName="Home" screenOptions={{tabBarStyle: {backgroundColor:'#5C469C',padding:5}}}>
             <Tab.Screen name="Home" component={HomePage} 
             options={{
                 tabBarIcon: ({ color, size }) => {
@@ -55,6 +56,7 @@ export default function MyNavigator() {
                 <Stack.Screen name="LogIn" component={LogIn} options={{headerTransparent: true, headerTitle: ''}}/>
                 <Stack.Screen name="Register" component={Register} options={{headerTransparent: true, headerTitle: ''}}/>
                 <Stack.Screen name="Home" component={TabNavigator} options={{headerShown:false}}/>
+                <Stack.Screen name="Profile" component={Profile}/>
             </Stack.Navigator>
         </NavigationContainer>
     )

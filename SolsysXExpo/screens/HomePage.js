@@ -4,90 +4,93 @@ import { StyleSheet, Text, TextInput, TouchableOpacity, View, SafeAreaView, Imag
 import { EvilIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 
-const HomePage = () => {
+const HomePage = ({navigation}) => {
     const [search, setSearch] = useState('');
     return(
         <SafeAreaView style={{flex:1, backgroundColor:'#0C0C4A'}}>
             <View style={styles.title}>
                 <Text style={{fontSize:40, fontWeight: 'bold', color: '#ffffff'}}>SolsysX</Text>
-                <TouchableOpacity style={styles.containerImage}>
+                <TouchableOpacity style={styles.containerImage} onPress={() => navigation.navigate("Profile")}>
                     <Image source={require('../assets/profile.jpg')} style={styles.image}/>
                 </TouchableOpacity>
             </View>
-            <View>
-                <TextInput style={styles.searchInput} placeholder='Search Plannet' value={search} onChangeText={setSearch}/>
-                {/* <EvilIcons name="search" size={24} color="#ffffff" style={styles.searchIcon} /> */}
-            </View>
-            <Text style={{color:'#ffffff', margin:15, fontSize:20, fontWeight:'bold'}}>Planet</Text>
+            
             <ScrollView>
                 <View style={{flexDirection: 'row'}}>
+                {/* Mercury */}
                 <TouchableOpacity style={styles.gridItem}>
-                    <LinearGradient colors={['rgba(169, 101, 60, 1)', 'rgba(169, 101, 60, 0.6)']} style={{borderRadius:10}}>
+                    <LinearGradient colors={['rgba(103, 95, 128, 1)', 'rgba(103, 95, 128, 0.4)']} style={{borderRadius:10}}>
                     <View style={styles.container}>
-                        <Image source={require('../assets/profile.jpg')} style={styles.plannetImage}/>
+                        <Image source={require('../assets/Mercury.png')} style={styles.plannetImage}/>
                         <Text style={styles.plannet}>Mercury</Text>
                     </View>
                     </LinearGradient>
                 </TouchableOpacity>
+                {/* Venus */}
                 <TouchableOpacity style={styles.gridItem}>
                     <LinearGradient colors={['rgba(169, 101, 60, 1)', 'rgba(169, 101, 60, 0.6)']} style={{borderRadius:10}}>
                     <View style={styles.container}>
-                        <Image source={require('../assets/profile.jpg')} style={styles.plannetImage}/>
-                        <Text style={styles.plannet}>Mercury</Text>
-                    </View>
-                    </LinearGradient>
-                </TouchableOpacity>
-                </View>
-                <View style={{flexDirection: 'row'}}>
-                <TouchableOpacity style={styles.gridItem}>
-                    <LinearGradient colors={['rgba(169, 101, 60, 1)', 'rgba(169, 101, 60, 0.6)']} style={{borderRadius:10}}>
-                    <View style={styles.container}>
-                        <Image source={require('../assets/profile.jpg')} style={styles.plannetImage}/>
-                        <Text style={styles.plannet}>Mercury</Text>
-                    </View>
-                    </LinearGradient>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.gridItem}>
-                    <LinearGradient colors={['rgba(169, 101, 60, 1)', 'rgba(169, 101, 60, 0.6)']} style={{borderRadius:10}}>
-                    <View style={styles.container}>
-                        <Image source={require('../assets/profile.jpg')} style={styles.plannetImage}/>
-                        <Text style={styles.plannet}>Mercury</Text>
+                        <Image source={require('../assets/Venus.png')} style={styles.plannetImage}/>
+                        <Text style={styles.plannet}>Venus</Text>
                     </View>
                     </LinearGradient>
                 </TouchableOpacity>
                 </View>
                 <View style={{flexDirection: 'row'}}>
+                {/* Earth */}
                 <TouchableOpacity style={styles.gridItem}>
-                    <LinearGradient colors={['rgba(169, 101, 60, 1)', 'rgba(169, 101, 60, 0.6)']} style={{borderRadius:10}}>
+                    <LinearGradient colors={['rgba(14, 98, 141, 1)', 'rgba(14, 98, 141, 0.6)']} style={{borderRadius:10}}>
                     <View style={styles.container}>
-                        <Image source={require('../assets/profile.jpg')} style={styles.plannetImage}/>
-                        <Text style={styles.plannet}>Mercury</Text>
+                        <Image source={require('../assets/Earth.png')} style={styles.plannetImage}/>
+                        <Text style={styles.plannet}>Earth</Text>
                     </View>
                     </LinearGradient>
                 </TouchableOpacity>
+                {/* Mars */}
                 <TouchableOpacity style={styles.gridItem}>
-                    <LinearGradient colors={['rgba(169, 101, 60, 1)', 'rgba(169, 101, 60, 0.6)']} style={{borderRadius:10}}>
+                    <LinearGradient colors={['rgba(238, 132, 104, 1)', 'rgba(238, 132, 104, 0.6)']} style={{borderRadius:10}}>
                     <View style={styles.container}>
-                        <Image source={require('../assets/profile.jpg')} style={styles.plannetImage}/>
-                        <Text style={styles.plannet}>Mercury</Text>
+                        <Image source={require('../assets/Mars.png')} style={styles.plannetImage}/>
+                        <Text style={styles.plannet}>Mars</Text>
                     </View>
                     </LinearGradient>
                 </TouchableOpacity>
                 </View>
                 <View style={{flexDirection: 'row'}}>
+                {/* Saturn */}
                 <TouchableOpacity style={styles.gridItem}>
-                    <LinearGradient colors={['rgba(169, 101, 60, 1)', 'rgba(169, 101, 60, 0.6)']} style={{borderRadius:10}}>
+                    <LinearGradient colors={['rgba(93, 69, 45, 1)', 'rgba(93, 69, 45, 0.6)']} style={{borderRadius:10}}>
                     <View style={styles.container}>
-                        <Image source={require('../assets/profile.jpg')} style={styles.plannetImage}/>
-                        <Text style={styles.plannet}>Mercury</Text>
+                        <Image source={require('../assets/Saturn.png')} style={styles.plannetImage}/>
+                        <Text style={styles.plannet}>Saturn</Text>
+                    </View>
+                    </LinearGradient>
+                </TouchableOpacity>
+                {/* Jupiter */}
+                <TouchableOpacity style={styles.gridItem}>
+                    <LinearGradient colors={['rgba(150, 90, 44, 1)', 'rgba(150, 90, 44, 0.6)']} style={{borderRadius:10}}>
+                    <View style={styles.container}>
+                        <Image source={require('../assets/jupiter.png')} style={styles.plannetImage}/>
+                        <Text style={styles.plannet}>Jupiter</Text>
+                    </View>
+                    </LinearGradient>
+                </TouchableOpacity>
+                </View>
+                <View style={{flexDirection: 'row'}}>
+                {/* Uranas */}
+                <TouchableOpacity style={styles.gridItem}>
+                    <LinearGradient colors={['rgba(136, 171, 180, 1)', 'rgba(136, 171, 180, 0.6)']} style={{borderRadius:10}}>
+                    <View style={styles.container}>
+                        <Image source={require('../assets/uranus.png')} style={styles.plannetImage}/>
+                        <Text style={styles.plannet}>Uranus</Text>
                     </View>
                     </LinearGradient>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.gridItem}>
-                    <LinearGradient colors={['rgba(169, 101, 60, 1)', 'rgba(169, 101, 60, 0.6)']} style={{borderRadius:10}}>
+                    <LinearGradient colors={['rgba(124, 210, 253, 1)', 'rgba(124, 210, 253, 0.6)']} style={{borderRadius:10}}>
                     <View style={styles.container}>
-                        <Image source={require('../assets/profile.jpg')} style={styles.plannetImage}/>
-                        <Text style={styles.plannet}>Mercury</Text>
+                        <Image source={require('../assets/Neptune.png')} style={styles.plannetImage}/>
+                        <Text style={styles.plannet}>Neptune</Text>
                     </View>
                     </LinearGradient>
                 </TouchableOpacity>
@@ -115,37 +118,30 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         margin:15
     },
-    searchInput: {
-        borderWidth: 1,
-        backgroundColor: "#fff",
-        padding: 10,
-        borderRadius: 5,
-        margin:15
-    },
-    searchIcon: {
-        position: 'absolute',
-        right: 16,
-    },
     plannetImage: {
-        width: 109,
-        height:109,
+        width: 150,
+        height:150,
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.4,
+        shadowRadius: 5
     },
     plannet: {
-        fontSize: 22,
+        fontSize: 30,
         fontWeight: "bold",
         color: '#ffffff',
-        padding:10
+
     },
     container: {
-        padding: 15,
+        padding: 10,
         justifyContent: 'center',
         alignItems: 'center',
       },
-      gridItem: {
+    gridItem: {
         flex: 1,
         margin: 15,
         height: 200,
-      },
+    },
 
 });
 
