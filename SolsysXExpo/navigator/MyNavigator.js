@@ -12,7 +12,7 @@ import HomePage from "../screens/HomePage";
 import PlanetSpin from "../screens/PlanetSpin";
 import Favorite from "../screens/FavoritePage";
 import Game from "../screens/GamePage";
-import Profile from "../screens/ProfilePage";
+import Profile from "../screens/Profile";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -56,7 +56,7 @@ export default function MyNavigator() {
                 <Stack.Screen name="LogIn" component={LogIn} options={{headerTransparent: true, headerTitle: ''}}/>
                 <Stack.Screen name="Register" component={Register} options={{headerTransparent: true, headerTitle: ''}}/>
                 <Stack.Screen name="Home" component={TabNavigator} options={{headerShown:false}}/>
-                <Stack.Screen name="Profile" component={Profile}/>
+                <Stack.Screen name="Profile" component={Profile} options={{headerStyle: { backgroundColor: "#0C0C4A", },headerTintColor: "white",}}/>
             </Stack.Navigator>
         </NavigationContainer>
     )

@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     },
     login: {
       color: '#fff',
-      fontSize: 40,
+      fontSize: 50,
       fontWeight: 'bold',
       textAlign: 'center',
       marginBottom:15
@@ -63,8 +63,8 @@ const styles = StyleSheet.create({
       backgroundColor: '#5C469C',
       padding: 10,
       margin: 15,
-      marginHorizontal:60,
-      borderRadius:15
+      marginHorizontal:50,
+      borderRadius:10
     },
     loginContainer: {
       flex:1,
