@@ -5,8 +5,11 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Entypo } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
+
+
 import Start from "../screens/Start";
 import HomePage from "../screens/HomePage";
+
 
 const Stack = createNativeStackNavigator();
 
