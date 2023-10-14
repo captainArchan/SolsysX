@@ -5,6 +5,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Entypo } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
+
+
 import Start from "../screens/Start";
 import LogIn from "../screens/LogInPage";
 import Register from "../screens/RegisterPage";
@@ -13,6 +15,7 @@ import PlanetSpin from "../screens/PlanetSpin";
 import Favorite from "../screens/FavoritePage";
 import Game from "../screens/GamePage";
 import Profile from "../screens/ProfilePage";
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -57,6 +60,7 @@ export default function MyNavigator() {
                 <Stack.Screen name="Register" component={Register} options={{headerTransparent: true, headerTitle: ''}}/>
                 <Stack.Screen name="Home" component={TabNavigator} options={{headerShown:false}}/>
                 <Stack.Screen name="Profile" component={Profile}/>
+                <Stack.Screen name="PlanetSpin" component={PlanetSpin} options={{headerShown:false}}/>
             </Stack.Navigator>
         </NavigationContainer>
     )
