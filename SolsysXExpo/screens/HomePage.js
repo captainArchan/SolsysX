@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View, SafeAreaView, Image, ScrollView } from 'react-native';
+import { StyleSheet, Text, ImageBackground, TouchableOpacity, View, SafeAreaView, Image, ScrollView } from 'react-native';
 import { EvilIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 
