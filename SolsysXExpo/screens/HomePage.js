@@ -3,16 +3,20 @@ import { useState } from 'react';
 import { StyleSheet, Text, ImageBackground, TouchableOpacity, View, SafeAreaView, Image, ScrollView } from 'react-native';
 import { EvilIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Feather } from '@expo/vector-icons';
 
 const HomePage = ({ navigation }) => {
     const [search, setSearch] = useState('');
     return(
         <SafeAreaView style={{flex:1, backgroundColor:'#000000'}}>
+            <ImageBackground source={require('../assets/star.png')} resizeMode="cover" style={styles.imageBack}>
+            <Feather style={styles.icon} name="menu" size={24} color="white" onPress={() => navigation.openDrawer()}  />
+            <ScrollView>
             <View style={styles.title}>
-                <Text style={{fontSize:40, fontWeight: 'bold', color: '#ffffff'}}>SolsysX</Text>
+                <Text style={{fontSize:40, fontWeight: 'bold', color: '#ffffff', textAlign: 'center'}}>SolsysX</Text>
+                {/* <Text style={{fontSize:18, color: '#ffffff', paddingTop:10}}>Let's explore the planet in Solar System</Text> */}
             </View>
 
-            <ScrollView>
                 <View style={{ flexDirection: 'row' }}>
                     {/* Mercury */}
                     <TouchableOpacity style={styles.gridItem}>
@@ -93,6 +97,7 @@ const HomePage = ({ navigation }) => {
                     </TouchableOpacity>
                 </View>
             </ScrollView>
+            </ImageBackground>
 
         </SafeAreaView>
     )
@@ -111,8 +116,6 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
     },
     title: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
         margin: 15
     },
     plannetImage: {
@@ -139,6 +142,13 @@ const styles = StyleSheet.create({
         margin: 15,
         height: 200,
     },
+    imageBack: {
+        flex:1,
+        justifyContent: 'center',
+    },
+    icon: {
+        margin:15
+    }
 
 });
 

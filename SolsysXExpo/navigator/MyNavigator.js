@@ -15,8 +15,8 @@ const Drawer = createDrawerNavigator();
 
 function MyDrawer(){
     return(
-        <Drawer.Navigator>
-        <Drawer.Screen name="Home" component={HomePage} options={{title:'',headerStyle: { backgroundColor: "#000000", },headerTintColor: "white",}}/>
+        <Drawer.Navigator screenOptions={{ drawerActiveTintColor: "black", drawerInactiveTintColor: "gray", }}>
+        <Drawer.Screen name="HomePage" component={HomePage} options={{headerShown:false}}/>
         <Drawer.Screen name="Game" component={Game}/>
         <Drawer.Screen name="Compare" component={Compare}/>
         </Drawer.Navigator>
