@@ -7,12 +7,9 @@ import { LinearGradient } from 'expo-linear-gradient';
 const HomePage = ({navigation}) => {
     const [search, setSearch] = useState('');
     return(
-        <SafeAreaView style={{flex:1, backgroundColor:'#0C0C4A'}}>
+        <SafeAreaView style={{flex:1, backgroundColor:'#000000'}}>
             <View style={styles.title}>
                 <Text style={{fontSize:40, fontWeight: 'bold', color: '#ffffff'}}>SolsysX</Text>
-                <TouchableOpacity style={styles.containerImage} onPress={() => navigation.navigate("Profile")}>
-                    <Image source={require('../assets/profile.jpg')} style={styles.image}/>
-                </TouchableOpacity>
             </View>
             
             <ScrollView>

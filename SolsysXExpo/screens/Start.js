@@ -5,7 +5,7 @@ const Start = ({navigation}) => {
     return (
         <ImageBackground source={require('../assets/start.png')} resizeMode="cover" style={styles.image}>
       <Text style={styles.text}>SolsysX</Text>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("LogIn")}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Home")}>
         <Text style={{color: '#fff', fontSize:30, fontWeight:'bold'}}>Start</Text>
       </TouchableOpacity>
     </ImageBackground>
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     },
     button: {
       alignItems: 'center',
-      backgroundColor: '#5C469C',
+      backgroundColor: '#4B2849',
       padding: 10,
       margin: 20,
       marginHorizontal:100,
