@@ -8,6 +8,7 @@ import Start from "../screens/Start";
 import HomePage from "../screens/HomePage";
 import Game from "../screens/GamePage";
 import Compare from "../screens/ComparePage";
+import PlanetSpin from "../screens/PlanetSpin";
 
 
 const Stack = createNativeStackNavigator();
@@ -29,6 +30,7 @@ export default function MyNavigator() {
             <Stack.Navigator initialRouteName="Start">
                 <Stack.Screen name="Start" component={Start} options={{headerShown:false}}/>
                 <Stack.Screen name="Home" component={MyDrawer} options={{headerShown:false}}/>
+                <Stack.Screen name="3d" component={PlanetSpin} options={{hederShown: false}}/>
             </Stack.Navigator>
         </NavigationContainer>
     )

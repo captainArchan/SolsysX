@@ -8,7 +8,7 @@ import { Canvas } from '@react-three/fiber';
 const PlanetSpin = () => {
     return (
         <View style={{ flex: 1 }}>
-            <Canvas style={{ flex: 1 }}>
+            <Canvas style={{ flex: 1}}>
                 <color attach="background" args={['#000000']} />
                 <ambientLight intensity={10}/>
                 <Suspense fallback={null}>

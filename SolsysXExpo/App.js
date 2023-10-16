@@ -5,7 +5,7 @@ import HomePage2 from './database/connectData';
 
 export default function App() {
   return (
-    <HomePage2/>
+    <MyNavigator/>
   );
 }
 
