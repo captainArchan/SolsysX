@@ -5,7 +5,8 @@ import { Canvas } from '@react-three/fiber';
 
 
 
-const PlanetSpin = () => {
+const PlanetSpin = ({route, navigation}) => {
+    console.log(route.params.name)
     return (
         <View style={{ flex: 1 }}>
             <Canvas style={{ flex: 1}}>
@@ -16,7 +17,7 @@ const PlanetSpin = () => {
                 </Suspense>
             </Canvas>
             <Text style={{flex :1 }}>  
-                123
+                {route.params.name}
             </Text>
         </View>
     )

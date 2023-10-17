@@ -30,7 +30,7 @@ export default function MyNavigator() {
             <Stack.Navigator initialRouteName="Start">
                 <Stack.Screen name="Start" component={Start} options={{headerShown:false}}/>
                 <Stack.Screen name="Home" component={MyDrawer} options={{headerShown:false}}/>
-                <Stack.Screen name="3d" component={PlanetSpin} options={{hederShown: false}}/>
+                <Stack.Screen name="planetSpin" component={PlanetSpin} options={{hederShown: false}}/>
             </Stack.Navigator>
         </NavigationContainer>
     )

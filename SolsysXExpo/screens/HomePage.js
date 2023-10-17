@@ -22,7 +22,8 @@ const HomePage = ({ navigation }) => {
                         distance: planet.data().distance,
                         moon: planet.data().moon,
                         name: planet.data().name,
-                        obrbit: planet.data().obrbit,
+                        nameTH: planet.data().nameTH,
+                        orbit: planet.data().orbit,
                         physical: planet.data().physical,
                         ring: planet.data().ring,
                         rotate: planet.data().rotate,
@@ -35,18 +36,33 @@ const HomePage = ({ navigation }) => {
         );
     }, [])
 
-   const renderPlanet = (planet) =>{
-        return(
+    const renderPlanet = (planet) => {
+        return (
             <PlanetList
-                name = {planet.item.name}
-                colors = {planet.item.colors}
-                onSelect ={()=>{
-                    {navigation.navigate("3d")}
+                name={planet.item.name}
+                colors={planet.item.colors}
+                onSelect={() => {
+                    {
+                        navigation.navigate("planetSpin", {
+                            name: planet.item.name,
+                            about: planet.item.about,
+                            atmosphere: planet.item.atmosphere,
+                            component: planet.item.component,
+                            distance: planet.item.distance,
+                            moon: planet.item.moon,
+                            orbit: planet.item.orbit,
+                            physical: planet.item.physical,
+                            ring: planet.item.ring,
+                            rotate: planet.item.rotate,
+                            size: planet.item.size,
+                            colors: planet.item.colors,
+                        })
+                    }
                 }}
             />
         )
     }
-    
+
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#000000' }}>
             <ImageBackground source={require('../assets/star.png')} resizeMode="cover" style={styles.imageBack} />
@@ -57,10 +73,10 @@ const HomePage = ({ navigation }) => {
                     {/* <Text style={{fontSize:18, color: '#ffffff', paddingTop:10}}>Let's explore the planet in Solar System</Text> */}
                 </View>
                 <FlatList
-                 data={dataPlanet}
-                 renderItem={renderPlanet}
-                 numColumns={2}
-                 keyExtractor={item => item.name}
+                    data={dataPlanet}
+                    renderItem={renderPlanet}
+                    numColumns={2}
+                    keyExtractor={item => item.name}
                 />
             </ScrollView>
 
@@ -69,11 +85,11 @@ const HomePage = ({ navigation }) => {
 }
 
 const styles = StyleSheet.create({
-    icon:{
+    icon: {
         margin: 15
     },
-    title:{
-        margin:15
+    title: {
+        margin: 15
     }
 });
 
