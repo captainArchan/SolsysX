@@ -11,9 +11,9 @@ const PlanetSpin = ({route, navigation}) => {
         <View style={{ flex: 1 }}>
             <Canvas style={{ flex: 1}}>
                 <color attach="background" args={['#000000']} />
-                <ambientLight intensity={10}/>
+                <ambientLight color={0xc6c1c1} intensity={3.7}/>
                 <Suspense fallback={null}>
-                    <PlanetAndSpin/>
+                    <PlanetAndSpin name={route.params.name}/>
                 </Suspense>
             </Canvas>
             <Text style={{flex :1 }}>  

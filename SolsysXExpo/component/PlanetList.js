@@ -1,21 +1,11 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
+import {planetImages} from '../component/PlanetAssets'
 
-const planetImages = {
-    Venus: require('../assets/Venus/Venus.png'),
-    Mars: require('../assets/Mars/Mars.png'),
-    Earth: require('../assets/Earth/Earth.png'),
-    Mercury: require('../assets/Mercury/Mercury.png'),
-    Jupiter: require('../assets/Jupiter/jupiter.png'),
-    Saturn: require('../assets/Saturn/Saturn.png'),
-    Uranus: require('../assets/Uranus/uranus.png'),
-    Neptune: require('../assets/Neptune/Neptune.png')
-}
 
 const PlanetList = (props) => {
     const imageSource = planetImages[props.name];
-    console.log(props.colors)
     return (
         <TouchableOpacity
             style={styles.gridItem}

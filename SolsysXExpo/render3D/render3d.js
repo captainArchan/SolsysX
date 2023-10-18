@@ -3,11 +3,13 @@ import {useLayoutEffect, useRef } from 'react';
 import {MTLLoader} from 'three/examples/jsm/loaders/MTLLoader'
 import {OBJLoader} from 'three/examples/jsm/loaders/OBJLoader'
 import {TextureLoader} from 'expo-three'
+import { planetTexture } from '../component/PlanetAssets';
 
-export default function PlanetAndSpin(planet){
-    const [bump, diffuse] = useLoader(TextureLoader, [
-        require('../assets/Earth/3d/bump.jpg'),
-        require('../assets/Earth/3d/Earth.jpg')
+export default function PlanetAndSpin(props){
+    const textturePlanet = planetTexture[props.name];
+
+    const [diffuse] = useLoader(TextureLoader, [
+        textturePlanet
     ]);
     const material = useLoader(MTLLoader, require('../assets/Earth/3d/Earth.mtl'))
     const object = useLoader(
@@ -23,7 +25,7 @@ export default function PlanetAndSpin(planet){
         object.traverse((child)=>{
             if (child instanceof THREE.Mesh){
                 child.material.map = diffuse;
-                child.material.bump = bump;
+
             }
         })
     }, [object]);
