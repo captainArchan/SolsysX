@@ -5,7 +5,7 @@ import Compare from './screens/ComparePage';
 
 export default function App() {
   return (
-    <Compare/>
+    <MyNavigator/>
   );
 }
 

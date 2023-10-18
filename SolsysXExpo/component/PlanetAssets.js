@@ -21,4 +21,15 @@ export const planetTexture ={
     Neptune: require('../assets/Neptune/3d/Neptune.jpg')
 }
 
+export const sizePlanet ={
+    Mercury: 2440,
+    Venus: 6052,
+    Earth: 6371,
+    Mars: 3390,
+    Jupiter: 69911,
+    Saturn: 118732,
+    Uranus: 25362,
+    Neptune: 24622
+}
+
 

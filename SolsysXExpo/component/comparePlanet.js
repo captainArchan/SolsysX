@@ -1,5 +1,8 @@
 function findRadius(planet1, planet2){
-    if(planet1 > planet2){
+    if(planet1 == 0 && planet2 == 0){
+        return [0,0]
+    }
+    else if(planet1 > planet2){
         if(planet1/4 > planet2){
             return [300, planet2*300/planet1];
         }else{

@@ -2,22 +2,60 @@ import { Canvas } from '@react-three/fiber';
 import React, { Suspense } from 'react';
 import { useState } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View, SafeAreaView, Image, } from 'react-native';
-import { planetImages } from '../component/PlanetAssets';
 import findRadius from '../component/comparePlanet';
+import { SelectList } from 'react-native-dropdown-select-list'
+import { planetImages, sizePlanet} from '../component/PlanetAssets';
 
 
 const Compare = ({ navigator }) => {
-    const planet1 = 58232;
-    const planet2 = 3390;
-    const scalePlanet = findRadius(planet1, planet2);
+    // const planet1 = 5822;
+    // const planet2 = 3390;
+    const [planet1, setPlanet1] = useState("");
+    const [planet2, setPlanet2] = useState("");
+    const data = [
+        { key: '1', value: 'Mercury' },
+        { key: '2', value: 'Venus' },
+        { key: '3', value: 'Earth' },
+        { key: '4', value: 'Mars' },
+        { key: '5', value: 'Jupiter' },
+        { key: '6', value: 'Saturn' },
+        { key: '7', value: 'Uranus' },
+        { key: '8', value: 'Neptune' },
+    ]
+    const imageSource1 = planet1 ? planetImages[planet1] : null;
+    const imageSource2 = planet2 ? planetImages[planet2] : null;
+    const size1 = planet1 ? sizePlanet[planet1] : 0;
+        const size2 = planet2 ? sizePlanet[planet2] : 0;
+        const scalePlanet = findRadius(size1, size2);
+
+    console.log(scalePlanet)
     return (
         <View style={{ flex: 1 }}>
-            <View>
-                <Dropdown/>
+            <Text>
+                เปรียบเทียบขนาดของดาวเคราะห์
+            </Text>
+            <View style={styles.dropdown}>
+                <SelectList
+                    setSelected={(val)=> setPlanet1(val)}
+                    data={data}
+                    save="value"
+                    search={false}
+                    placeholder='Choose a planet'
+                    maxHeight={150}
+                    style={{backgroundColor: 'white'}}
+                />
+                <SelectList
+                    setSelected={(val)=> setPlanet2(val)}
+                    data={data}
+                    save="value"
+                    search={false}
+                    placeholder='Choose a planet'
+                    maxHeight={150}
+                />
             </View>
             <View style={styles.container} >
-                <Image source={planetImages['Neptune']} style={{ width: scalePlanet[0], height: scalePlanet[0] }} />
-                <Image source={planetImages['Uranus']} style={{ width: scalePlanet[1], height: scalePlanet[1] }} />
+                <Image source={imageSource1} style={{width:scalePlanet[0], height:scalePlanet[0]}}/>
+                <Image source={imageSource2} style={{width:scalePlanet[1], height:scalePlanet[1]}}/>
             </View>
         </View>
 
@@ -26,11 +64,19 @@ const Compare = ({ navigator }) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 2,
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row',
         backgroundColor: 'black'
+    },
+    dropdown:{
+        flexDirection: 'row',
+        flex: 1, 
+        marginTop: 50 ,
+        justifyContent: 'center',
+        backgroundColor: 'black'
+
     }
 })
 
