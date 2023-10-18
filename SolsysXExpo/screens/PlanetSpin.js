@@ -5,19 +5,20 @@ import { Canvas } from '@react-three/fiber';
 
 
 
-const PlanetSpin = ({route, navigation}) => {
-    console.log(route.params.name)
+const PlanetSpin = ({ route, navigation }) => {
+
     return (
         <View style={{ flex: 1 }}>
-            <Canvas style={{ flex: 1}}>
+            <Canvas style={{ flex: 1 }}>
                 <color attach="background" args={['#000000']} />
-                <ambientLight color={0xc6c1c1} intensity={3.7}/>
+                <ambientLight color={0xc6c1c1} intensity={4} />
                 <Suspense fallback={null}>
-                    <PlanetAndSpin name={route.params.name}/>
+                    <PlanetAndSpin name={route.params.name} />
                 </Suspense>
+
             </Canvas>
-            <Text style={{flex :1 }}>  
-                {route.params.name}
+            <Text style={{ flex: 1 }}>
+                {route.params.about}
             </Text>
         </View>
     )

@@ -31,7 +31,7 @@ export default function PlanetAndSpin(props){
     }, [object]);
 
     useFrame((state, delta)=>{
-        mesh.current.rotation.y += 0.002
+        mesh.current.rotation.x += 0.002
         
     })
 

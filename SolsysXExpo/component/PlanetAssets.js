@@ -7,8 +7,8 @@ export const planetImages = {
     Saturn: require('../assets/Saturn/Saturn.png'),
     Uranus: require('../assets/Uranus/uranus.png'),
     Neptune: require('../assets/Neptune/Neptune.png')
+    
 }
-
 
 export const planetTexture ={
     Venus: require('../assets/Venus/3d/Venus.jpg'),
@@ -17,7 +17,8 @@ export const planetTexture ={
     Mercury: require('../assets/Mercury/3d/Mercury.jpg'),
     Jupiter: require('../assets/Jupiter/3d/Jupiter.jpg'),
     // Saturn: require('../assets/Saturn/Saturn.png'),
-    Uranus: require('../assets/Uranus/3d/Uranus5.jpg'),
+    Uranus: require('../assets/Uranus/3d/Uranus7.jpg'),
     Neptune: require('../assets/Neptune/3d/Neptune.jpg')
 }
+
 
