@@ -9,7 +9,7 @@ import HomePage from "../screens/HomePage";
 import Game from "../screens/GamePage";
 import Compare from "../screens/ComparePage";
 import PlanetSpin from "../screens/PlanetSpin";
-
+import PlanetInfo from "../screens/PlanetInfo";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -30,7 +30,8 @@ export default function MyNavigator() {
             <Stack.Navigator initialRouteName="Start">
                 <Stack.Screen name="Start" component={Start} options={{headerShown:false}}/>
                 <Stack.Screen name="Home" component={MyDrawer} options={{headerShown:false}}/>
-                <Stack.Screen name="planetSpin" component={PlanetSpin} options={{hederShown: false}}/>
+                <Stack.Screen name="planetSpin" component={PlanetSpin} options={{headerTitle: '', headerStyle: {backgroundColor: '#000000'}, headerTintColor: "white"}}/>
+                <Stack.Screen name="planetInfo" component={PlanetInfo} options={{headerTitle: '', headerStyle: {backgroundColor: '#000000'}, headerTintColor: "white"}}/>
             </Stack.Navigator>
         </NavigationContainer>
     )
