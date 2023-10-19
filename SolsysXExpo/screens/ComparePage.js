@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View, SafeAreaView, Image, } from 'react-native';
 import findRadius from '../component/comparePlanet';
 import { SelectList } from 'react-native-dropdown-select-list'
-import { planetImages, sizePlanet} from '../component/PlanetAssets';
+import { planetImages, sizePlanet } from '../component/PlanetAssets';
 
 
 const Compare = ({ navigator }) => {
@@ -25,37 +25,39 @@ const Compare = ({ navigator }) => {
     const imageSource1 = planet1 ? planetImages[planet1] : null;
     const imageSource2 = planet2 ? planetImages[planet2] : null;
     const size1 = planet1 ? sizePlanet[planet1] : 0;
-        const size2 = planet2 ? sizePlanet[planet2] : 0;
-        const scalePlanet = findRadius(size1, size2);
+    const size2 = planet2 ? sizePlanet[planet2] : 0;
+    const scalePlanet = findRadius(size1, size2);
 
     console.log(scalePlanet)
     return (
         <View style={{ flex: 1 }}>
-            <Text>
-                เปรียบเทียบขนาดของดาวเคราะห์
-            </Text>
+            <Text style={styles.header}>เปรียบเทียบ{"\n"}ขนาดและการหมุน</Text>
             <View style={styles.dropdown}>
                 <SelectList
-                    setSelected={(val)=> setPlanet1(val)}
+                    setSelected={(val) => setPlanet1(val)}
                     data={data}
                     save="value"
                     search={false}
                     placeholder='Choose a planet'
                     maxHeight={150}
-                    style={{backgroundColor: 'white'}}
+                    boxStyles={{backgroundColor:'white'}}
+                    dropdownStyles={{ backgroundColor: 'white' }}
+
                 />
                 <SelectList
-                    setSelected={(val)=> setPlanet2(val)}
+                    setSelected={(val) => setPlanet2(val)}
                     data={data}
                     save="value"
                     search={false}
                     placeholder='Choose a planet'
                     maxHeight={150}
+                    boxStyles={{backgroundColor:'white'}}
+                    dropdownStyles={{ backgroundColor: 'white' }}
                 />
             </View>
             <View style={styles.container} >
-                <Image source={imageSource1} style={{width:scalePlanet[0], height:scalePlanet[0]}}/>
-                <Image source={imageSource2} style={{width:scalePlanet[1], height:scalePlanet[1]}}/>
+                <Image source={imageSource1} style={{ width: scalePlanet[0], height: scalePlanet[0] }} />
+                <Image source={imageSource2} style={{ width: scalePlanet[1], height: scalePlanet[1] }} />
             </View>
         </View>
 
@@ -64,19 +66,29 @@ const Compare = ({ navigator }) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 2,
+        flex: 5,
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row',
+        zIndex: -5,
         backgroundColor: 'black'
     },
-    dropdown:{
+    dropdown: {
         flexDirection: 'row',
-        flex: 1, 
-        marginTop: 50 ,
-        justifyContent: 'center',
+        flex: 1,
+        justifyContent: 'space-around',
+        backgroundColor: 'white',
+        zIndex: 10,
         backgroundColor: 'black'
 
+    },
+    header: {
+        flex: 1,
+        fontSize: 30,
+        textAlign: 'center',
+        padding: 70,
+        backgroundColor: 'black',
+        color: 'white',
     }
 })
 
