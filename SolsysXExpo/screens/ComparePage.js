@@ -13,7 +13,7 @@ const Compare = ({ navigator }) => {
     const [planet1, setPlanet1] = useState("");
     const [planet2, setPlanet2] = useState("");
     const data = [
-        { key: '1', value: 'Mercury' },
+        { key: '1', value: 'Mercury', },
         { key: '2', value: 'Venus' },
         { key: '3', value: 'Earth' },
         { key: '4', value: 'Mars' },
@@ -30,7 +30,7 @@ const Compare = ({ navigator }) => {
 
     console.log(scalePlanet)
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, backgroundColor: 'black' }}>
             <Text style={styles.header}>เปรียบเทียบ{"\n"}ขนาดและการหมุน</Text>
             <View style={styles.dropdown}>
                 <SelectList
@@ -39,8 +39,8 @@ const Compare = ({ navigator }) => {
                     save="value"
                     search={false}
                     placeholder='Choose a planet'
-                    maxHeight={150}
-                    boxStyles={{backgroundColor:'white'}}
+                    maxHeight={200}
+                    boxStyles={{backgroundColor:'white', width: 130}}
                     dropdownStyles={{ backgroundColor: 'white' }}
 
                 />
@@ -50,8 +50,8 @@ const Compare = ({ navigator }) => {
                     save="value"
                     search={false}
                     placeholder='Choose a planet'
-                    maxHeight={150}
-                    boxStyles={{backgroundColor:'white'}}
+                    maxHeight={200}
+                    boxStyles={{backgroundColor:'white', width: 130}}
                     dropdownStyles={{ backgroundColor: 'white' }}
                 />
             </View>
@@ -66,21 +66,19 @@ const Compare = ({ navigator }) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 5,
+        flex: 6,
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row',
-        zIndex: -5,
         backgroundColor: 'black'
     },
     dropdown: {
         flexDirection: 'row',
-        flex: 1,
-        justifyContent: 'space-around',
+        flex: 2,
+        justifyContent:'space-around',
         backgroundColor: 'white',
         zIndex: 10,
         backgroundColor: 'black'
-
     },
     header: {
         flex: 1,
