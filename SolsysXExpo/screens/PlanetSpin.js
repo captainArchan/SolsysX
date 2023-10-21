@@ -15,10 +15,11 @@ const PlanetSpin = ({ route, navigation }) => {
                 <Suspense fallback={null}>
                     <PlanetAndSpin name={route.params.name} tilted={route.params.tilted} rotate={route.params.rotate} />
                 </Suspense>
-                <Suspense fallback={null}>
-                    <RenderRing/>
-                </Suspense>
-
+                <RenderRing position={[0,0.3,0]} args={[2.2, 2.4,30]} color={'#655f45'}/>
+                <RenderRing position={[0,0.3,0]} args={[2.4, 2.5,30]} color={'#d8ae6d'}/>
+                <RenderRing position={[0,0.3,0]} args={[2.5, 2.6,30]} color={'#ffe1ab'}/>
+                <RenderRing position={[0,0.3,0]} args={[2.6, 2.7,30]} color={'#dbb57c'}/>
+                <RenderRing position={[0,0.3,0]} args={[2.7, 2.8,30]} color={'#b89c72'}/>
             </Canvas>
             <View style={styles.about}>
                 <ImageBackground source={require('../assets/star.png')} style={{ flex: 1 }} resizeMode="cover">

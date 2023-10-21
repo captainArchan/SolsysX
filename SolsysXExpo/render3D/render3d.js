@@ -39,7 +39,7 @@ export function PlanetAndSpin(props) {
 
     return (
         <mesh ref={mesh} >
-            <primitive object={object} scale={2} position={[-2, -2, -1.9]} />
+            <primitive object={object} scale={2} position={[-2, -2, -1.85]} />
 
         </mesh>
     )

@@ -1,9 +1,10 @@
 import { useFrame, useLoader } from "@react-three/fiber";
 import { useRef } from "react";
+import { MeshBasicMaterial } from "three";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 
 
-export function RenderRing(){
+export function RenderRing(props){
 
     const mesh = useRef();
     useFrame((state, delta) => {
@@ -12,8 +13,9 @@ export function RenderRing(){
     })
 
     return (
-        <mesh ref={mesh} position={[0,0,1]} scale={[3.5,2,0]}>
-            <ringGeometry innerRadius={1} />
+        <mesh ref={mesh} position={props.position} >
+            <ringGeometry args={props.args} />
+            <meshStandardMaterial color={props.color}/>
         </mesh>
     )
 }
