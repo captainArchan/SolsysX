@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import MyNavigator from './navigator/MyNavigator';
-import Compare from './screens/ComparePage';
+
 
 export default function App() {
   return (
