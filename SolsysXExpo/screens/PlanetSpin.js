@@ -1,8 +1,8 @@
-import React, { Suspense } from 'react';
-import { StyleSheet, Text, ImageBackground, TouchableOpacity, View,SafeAreaView } from 'react-native';
-import PlanetAndSpin from '../render3D/render3d';
-import { Canvas } from '@react-three/fiber';
-
+import React, { Suspense, useRef, useState } from 'react';
+import { StyleSheet, Text, ImageBackground, TouchableOpacity, View, SafeAreaView } from 'react-native';
+import { PlanetAndSpin, test } from '../render3D/render3d';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { RenderRing } from '../render3D/renderRing';
 
 
 const PlanetSpin = ({ route, navigation }) => {
@@ -11,32 +11,35 @@ const PlanetSpin = ({ route, navigation }) => {
         <View style={{ flex: 1 }}>
             <Canvas style={{ flex: 1 }}>
                 <color attach="background" args={['#000000']} />
-                <ambientLight color={0xc6c1c1} intensity={4} />
+                <ambientLight color={0xc6c1c1} intensity={3} />
                 <Suspense fallback={null}>
-                    <PlanetAndSpin name={route.params.name} />
+                    <PlanetAndSpin name={route.params.name} tilted={route.params.tilted} rotate={route.params.rotate} />
+                </Suspense>
+                <Suspense fallback={null}>
+                    <RenderRing/>
                 </Suspense>
 
             </Canvas>
             <View style={styles.about}>
-            <ImageBackground source={require('../assets/star.png')} style={{ flex: 1 }} resizeMode="cover">
-                <Text style={styles.title}> {route.params.name} </Text>
-                <Text style={styles.content}>{route.params.about} </Text>
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("planetInfo", {
-                    name: route.params.name,
-                    about: route.params.about,
-                    atmosphere: route.params.atmosphere,
-                    component: route.params.component,
-                    distance: route.params.distance,
-                    moon: route.params.moon,
-                    orbit: route.params.orbit,
-                    physical: route.params.physical,
-                    ring: route.params.ring,
-                    rotate: route.params.rotate,
-                    size: route.params.size,
-                    colors: route.params.colors,
-                })}>
-                <Text style={{color: '#fff', fontSize:22, fontWeight:'bold'}}>Explore</Text>
-                </TouchableOpacity>
+                <ImageBackground source={require('../assets/star.png')} style={{ flex: 1 }} resizeMode="cover">
+                    <Text style={styles.title}> {route.params.name} </Text>
+                    <Text style={styles.content}>{route.params.about} </Text>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("planetInfo", {
+                        name: route.params.name,
+                        about: route.params.about,
+                        atmosphere: route.params.atmosphere,
+                        component: route.params.component,
+                        distance: route.params.distance,
+                        moon: route.params.moon,
+                        orbit: route.params.orbit,
+                        physical: route.params.physical,
+                        ring: route.params.ring,
+                        rotate: route.params.rotate,
+                        size: route.params.size,
+                        colors: route.params.colors,
+                    })}>
+                        <Text style={{ color: '#fff', fontSize: 22, fontWeight: 'bold' }}>Explore</Text>
+                    </TouchableOpacity>
                 </ImageBackground>
             </View>
         </View>
@@ -50,7 +53,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     about: {
-        flex:1,
+        flex: 1,
         backgroundColor: "#000000"
     },
     title: {
@@ -62,9 +65,9 @@ const styles = StyleSheet.create({
     },
     content: {
         color: "#ffff",
-        marginHorizontal:30,
-        margin:10,
-        fontSize:16,
+        marginHorizontal: 30,
+        margin: 10,
+        fontSize: 16,
         textAlign: 'center'
     },
     button: {
@@ -72,9 +75,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#4B2849',
         padding: 10,
         margin: 20,
-        marginHorizontal:110,
-        borderRadius:15
-      },
+        marginHorizontal: 110,
+        borderRadius: 15
+    },
 })
 
 export default PlanetSpin;

@@ -16,7 +16,7 @@ export const planetTexture ={
     Earth: require('../assets/Earth/3d/Earth.jpg'),
     Mercury: require('../assets/Mercury/3d/Mercury.jpg'),
     Jupiter: require('../assets/Jupiter/3d/Jupiter.jpg'),
-    // Saturn: require('../assets/Saturn/Saturn.png'),
+    Saturn: require('../assets/Saturn/3d/Saturn3.jpg'),
     Uranus: require('../assets/Uranus/3d/Uranus7.jpg'),
     Neptune: require('../assets/Neptune/3d/Neptune.jpg')
 }
