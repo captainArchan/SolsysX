@@ -25,31 +25,26 @@ const PlanetSpin = ({ route, navigation }) => {
                 <RenderRing name={route.params.name} position={[0, 0.3, 0]} args={[2.7, 2.8, 30]} color={'#b89c72'} />
             </Canvas>
             <View style={styles.about}>
-                <ImageBackground source={require('../assets/star.png')} style={{ flex: 1 }} resizeMode="cover">
-                    <View style={{flexDirection: 'row'}}>
-                        <Text style={styles.title}> {route.params.name} </Text>
-                        <TouchableOpacity onPress={()=> speedTime? setSpeedTime(false): setSpeedTime(true)}>
-                            <Text style={styles.speed}>{speedTime? "Speed Up": "Slow Down"}</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <Text style={styles.content}>{route.params.about} </Text>
-                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("planetInfo", {
-                        name: route.params.name,
-                        about: route.params.about,
-                        atmosphere: route.params.atmosphere,
-                        component: route.params.component,
-                        distance: route.params.distance,
-                        moon: route.params.moon,
-                        orbit: route.params.orbit,
-                        physical: route.params.physical,
-                        ring: route.params.ring,
-                        rotate: route.params.rotate,
-                        size: route.params.size,
-                        colors: route.params.colors,
-                    })}>
-                        <Text style={{ color: '#fff', fontSize: 22, fontWeight: 'bold' }}>Explore</Text>
-                    </TouchableOpacity>
-                </ImageBackground>
+            {/* <ImageBackground source={require('../assets/star.png')} style={{ flex: 1 }} resizeMode="cover"> */}
+                <Text style={styles.title}> {route.params.name} </Text>
+                <Text style={styles.content}>{route.params.about} </Text>
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("planetInfo", {
+                    name: route.params.name,
+                    about: route.params.about,
+                    atmosphere: route.params.atmosphere,
+                    component: route.params.component,
+                    distance: route.params.distance,
+                    moon: route.params.moon,
+                    orbit: route.params.orbit,
+                    physical: route.params.physical,
+                    ring: route.params.ring,
+                    rotate: route.params.rotate,
+                    size: route.params.size,
+                    colors: route.params.colors,
+                })}>
+                <Text style={{color: '#fff', fontSize:22, fontWeight:'bold'}}>Explore</Text>
+                </TouchableOpacity>
+                {/* </ImageBackground> */}
             </View>
         </View>
     )
