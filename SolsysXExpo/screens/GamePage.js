@@ -7,46 +7,81 @@ const Game = ({ navigation }) => {
     const [question, setQuestion] = useState(null);
     const [choices, setChoices] = useState({});
     const quizCollection = firebase.firestore().collection('game');
-
+    const [score, setScore] = useState(0);
+    const [answer, setAnswer] = useState(0);
+    const [numberQuiz, setNumberQuiz] = useState([]); // เอาไว้เก็บเลขข้อ แล้วเอาไปเช็คในwhileว่าซ้ำไหม ถ้าซ้ำก็สุ่มใหม่
     useEffect(() => {
-        const unsubscribe = quizCollection.onSnapshot((querySnapshot) => {
-            const allData = [];
-            querySnapshot.forEach((res) => {
-                const { question, choice, answer } = res.data();
-                allData.push({ key: res.id, question, choice, answer });
-            });
-
-            const randomQuestion = allData[Math.floor(Math.random() * allData.length)];
-            setQuestion(randomQuestion.question);
-            setChoices(randomQuestion.choice);
-        });
-
-        return () => {
-            unsubscribe();
+        const asyncFn = async () => {
+            let number = getRandomInt(20);
+            let check = false
+            while(!check){
+                if((numberQuiz.findIndex((element) =>  element == number)) == -1){
+                    setNumberQuiz(prevNumber => [...prevNumber, number]);
+                    check = true;
+                }else{
+                    number = getRandomInt(20);
+                }
+            }
+            const fireb = await quizCollection.get();
+            const all_id = [];
+            fireb.forEach(element => {
+                all_id.push({
+                    id: element.id
+                })
+            }); // เอาข้อมูล id คำถามมาใส่ใน all_id
+            const quiz = await quizCollection.doc(all_id[number].id).get(); // getตามid ที่ได้
+            setChoices(quiz.data().choice)
+            setQuestion(quiz.data().question)
+            setAnswer(quiz.data().answer)
         };
+        asyncFn()
     }, []);
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+    }
+    const randomQuestion = () => {
+        console.log(quizData)
+        const randomQuiz = quizData[Math.floor(Math.random() * quizData.length)];
+        console.log(randomQuiz);
+        setQuestion(randomQuiz.question);
+        setChoices(randomQuiz.choice);
+        setAnswer(randomQuiz.answer)
+    }
 
     const handleAnswer = (selectedAnswer) => {
         const ans = answer;
-        if(ans === selectedAnswer){
+        if (ans === selectedAnswer) {
+            console.log(score)
             alert("right answer")
-        }
+            setScore((prevScore) => prevScore + 1)
+            console.log(score)
+        } else (
+            alert("try again")
+        )
     }
 
     return (
-        <SafeAreaView style={{flex:1, backgroundColor:'#000000'}}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#000000' }}>
             {/* <ImageBackground source={require('../assets/game.png')} resizeMode="cover" style={styles.imageBack}> */}
             <View style={styles.questionContainer}>
-                <Text style={styles.questionText}>{question}</Text>
-                <FlatList
-                data={choices}
-                renderItem={({ item }) => (
-                    <TouchableOpacity style={styles.optionContainer}>
-                        <Text style={styles.optionStyle}>{item}</Text>
-                    </TouchableOpacity>
-                )}
-                keyExtractor={(item) => item}
-            />
+                <Text>
+                    {question}
+                </Text>
+                <Text>
+                    {answer}
+                </Text>
+                <Text>
+                    {choices[0]}
+                </Text>
+                <Text>
+                    {choices[1]}
+                </Text>
+                <Text>
+                    {choices[2]}
+                </Text>
+                <Text>
+                    {choices[3]}
+                </Text>
             </View>
             {/* </ImageBackground> */}
         </SafeAreaView>
@@ -72,16 +107,16 @@ const styles = StyleSheet.create({
         fontSize: 18
     },
     optionContainer: {
-        marginTop:15
+        marginTop: 15
     },
     questionText: {
-        fontSize:20
+        fontSize: 20
     },
     imageBack: {
-        flex:1,
+        flex: 1,
         justifyContent: 'center',
     },
-    
+
 });
 
 export default Game;

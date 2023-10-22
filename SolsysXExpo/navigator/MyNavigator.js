@@ -34,6 +34,7 @@ export default function MyNavigator() {
                 <Stack.Screen name="Home" component={MyDrawer} options={{headerShown:false}}/>
                 <Stack.Screen name="planetSpin" component={PlanetSpin} options={{headerTitle: '', headerStyle: {backgroundColor: '#000000'}, headerTintColor: "white"}}/>
                 <Stack.Screen name="planetInfo" component={PlanetInfo} options={{headerTitle: '', headerStyle: {backgroundColor: '#000000'}, headerTintColor: "white"}}/>
+
             </Stack.Navigator>
         </NavigationContainer>
     )

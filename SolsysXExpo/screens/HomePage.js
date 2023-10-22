@@ -28,7 +28,9 @@ const HomePage = ({ navigation }) => {
                         ring: planet.data().ring,
                         rotate: planet.data().rotate,
                         size: planet.data().size,
-                        colors: planet.data().color
+                        colors: planet.data().color,
+                        tilted: planet.data().tilted,
+                        rotate: planet.data().day
                     })
                 })
                 setDataPlanet(data);
@@ -56,6 +58,9 @@ const HomePage = ({ navigation }) => {
                             rotate: planet.item.rotate,
                             size: planet.item.size,
                             colors: planet.item.colors,
+                            rotate: planet.item.rotate,
+                            tilted: planet.item.tilted,
+                            
                         })
                     }
                 }}
