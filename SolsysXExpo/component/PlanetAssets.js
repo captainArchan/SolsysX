@@ -22,8 +22,19 @@ export const planetTexture ={
 }
 
 export const moonImage = {
-    Earth: require('../assets/Earth/moon/moon.png'),
-    Mars: [require('../assets/Mars/moon/Phobos.png'), require('../assets/Mars/moon/Deimos.png')],
+    ไม่มี: null,
+    Moon: require('../assets/Earth/moon/moon.png'),
+    Phobos: require('../assets/Mars/moon/Phobos.png'),
+    Deimos: require('../assets/Mars/moon/Deimos.png'),
+    IO: require('../assets/Jupiter/moon/Io.png'),
+    Europa: require('../assets/Jupiter/moon/Europa.png'),
+    Ganymede: require('../assets/Jupiter/moon/Ganymede.png'),
+    Callisto: require('../assets/Jupiter/moon/Callisto.png'),
+    Miranda: require('../assets/Uranus/moon/Miranda.png'),
+    Titania: require('../assets/Uranus/moon/Titania.png'),
+    Ariel: require('../assets/Uranus/moon/Ariel.png'),
+    Oberon: require('../assets/Uranus/moon/Oberon.png'),
+    Triton: require('../assets/Neptune/moon/Triton.png')
 }
 
 export const sizePlanet ={

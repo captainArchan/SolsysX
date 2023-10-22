@@ -18,7 +18,7 @@ const PlanetSpin = ({ route, navigation }) => {
 
             </Canvas>
             <View style={styles.about}>
-            <ImageBackground source={require('../assets/star.png')} style={{ flex: 1 }} resizeMode="cover">
+            {/* <ImageBackground source={require('../assets/star.png')} style={{ flex: 1 }} resizeMode="cover"> */}
                 <Text style={styles.title}> {route.params.name} </Text>
                 <Text style={styles.content}>{route.params.about} </Text>
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("planetInfo", {
@@ -37,7 +37,7 @@ const PlanetSpin = ({ route, navigation }) => {
                 })}>
                 <Text style={{color: '#fff', fontSize:22, fontWeight:'bold'}}>Explore</Text>
                 </TouchableOpacity>
-                </ImageBackground>
+                {/* </ImageBackground> */}
             </View>
         </View>
     )
