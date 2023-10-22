@@ -1,5 +1,5 @@
 import { useFrame, useLoader } from '@react-three/fiber';
-import { useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 import { TextureLoader } from 'expo-three'
@@ -9,6 +9,7 @@ export function PlanetAndSpin(props) {
     const textturePlanet = planetTexture[props.name];
     const tilted = props.tilted * Math.PI / 180; // องศา
     const degreePerMinute = (360 / (props.rotate * 60)) * (Math.PI / 180);//0.016667 องศาการหมุน1นาที
+
     const [diffuse] = useLoader(TextureLoader, [
         textturePlanet
     ]);
@@ -33,6 +34,7 @@ export function PlanetAndSpin(props) {
     useFrame((state, delta) => {
 
         mesh.current.rotation.y += degreePerMinute
+        // console.log((mesh.current.rotation.y *180/Math.PI)%360)
         mesh.current.rotation.x = tilted
 
     })
@@ -40,7 +42,6 @@ export function PlanetAndSpin(props) {
     return (
         <mesh ref={mesh} >
             <primitive object={object} scale={2} position={[-2, -2, -1.85]} />
-
         </mesh>
     )
 }

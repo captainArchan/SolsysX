@@ -6,24 +6,32 @@ import { RenderRing } from '../render3D/renderRing';
 
 
 const PlanetSpin = ({ route, navigation }) => {
-
+    const [speedTime, setSpeedTime] = useState(true);
     return (
         <View style={{ flex: 1 }}>
             <Canvas style={{ flex: 1 }}>
                 <color attach="background" args={['#000000']} />
                 <ambientLight color={0xc6c1c1} intensity={3} />
                 <Suspense fallback={null}>
-                    <PlanetAndSpin name={route.params.name} tilted={route.params.tilted} rotate={route.params.rotate} />
+                    {speedTime? <PlanetAndSpin name={route.params.name} tilted={route.params.tilted} rotate={route.params.rotate} />
+                    :<PlanetAndSpin name={route.params.name} tilted={route.params.tilted} rotate={route.params.rotate/60} />
+                    }
+                    {/* <PlanetAndSpin name={route.params.name} tilted={route.params.tilted} rotate={route.params.rotate} /> */}
                 </Suspense>
-                <RenderRing position={[0,0.3,0]} args={[2.2, 2.4,30]} color={'#655f45'}/>
-                <RenderRing position={[0,0.3,0]} args={[2.4, 2.5,30]} color={'#d8ae6d'}/>
-                <RenderRing position={[0,0.3,0]} args={[2.5, 2.6,30]} color={'#ffe1ab'}/>
-                <RenderRing position={[0,0.3,0]} args={[2.6, 2.7,30]} color={'#dbb57c'}/>
-                <RenderRing position={[0,0.3,0]} args={[2.7, 2.8,30]} color={'#b89c72'}/>
+                <RenderRing name={route.params.name} position={[0, 0.3, 0]} args={[2.2, 2.4, 30]} color={'#655f45'} />
+                <RenderRing name={route.params.name} position={[0, 0.3, 0]} args={[2.4, 2.5, 30]} color={'#d8ae6d'} />
+                <RenderRing name={route.params.name} position={[0, 0.3, 0]} args={[2.5, 2.6, 30]} color={'#ffe1ab'} />
+                <RenderRing name={route.params.name} position={[0, 0.3, 0]} args={[2.6, 2.7, 30]} color={'#dbb57c'} />
+                <RenderRing name={route.params.name} position={[0, 0.3, 0]} args={[2.7, 2.8, 30]} color={'#b89c72'} />
             </Canvas>
             <View style={styles.about}>
                 <ImageBackground source={require('../assets/star.png')} style={{ flex: 1 }} resizeMode="cover">
-                    <Text style={styles.title}> {route.params.name} </Text>
+                    <View style={{flexDirection: 'row'}}>
+                        <Text style={styles.title}> {route.params.name} </Text>
+                        <TouchableOpacity onPress={()=> speedTime? setSpeedTime(false): setSpeedTime(true)}>
+                            <Text style={styles.speed}>{speedTime? "Speed Up": "Slow Down"}</Text>
+                        </TouchableOpacity>
+                    </View>
                     <Text style={styles.content}>{route.params.about} </Text>
                     <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("planetInfo", {
                         name: route.params.name,
@@ -79,6 +87,10 @@ const styles = StyleSheet.create({
         marginHorizontal: 110,
         borderRadius: 15
     },
+    speed:{
+        color: 'white',
+        
+    }
 })
 
 export default PlanetSpin;
