@@ -38,7 +38,7 @@ const Game = ({ navigation }) => {
             quizHandler(allQuiz,index)
             setQuiz(allQuiz)
             console.log(allQuiz[0])
-            
+
         };
         asyncFn()
     }, []);

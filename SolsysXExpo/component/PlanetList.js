@@ -6,7 +6,6 @@ import {planetImages} from '../component/PlanetAssets'
 
 const PlanetList = (props) => {
     const imageSource = planetImages[props.name];
-    console.log(imageSource)
     return (
         <TouchableOpacity
             style={styles.gridItem}
