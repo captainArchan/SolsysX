@@ -11,6 +11,7 @@ import Compare from "../screens/ComparePage";
 import PlanetSpin from "../screens/PlanetSpin";
 import PlanetInfo from "../screens/PlanetInfo";
 import Model from "../screens/ModelPage";
+import SolarSystem from "../screens/SolarSystemPage";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -19,9 +20,9 @@ function MyDrawer(){
     return(
         <Drawer.Navigator screenOptions={{ drawerActiveTintColor: "black", drawerInactiveTintColor: "gray", }}>
         <Drawer.Screen name="Home" component={HomePage} options={{headerShown:false}}/>
+        <Drawer.Screen name="Solar System" component={SolarSystem} options={{headerShown:false}}/>
         <Drawer.Screen name="Game" component={Game} options={{headerShown:false}}/>
         <Drawer.Screen name="Compare" component={Compare} options={{headerShown:false}}/>
-        <Drawer.Screen name="Model" component={Model} options={{headerShown:false}}/>
         </Drawer.Navigator> 
     )
 }
