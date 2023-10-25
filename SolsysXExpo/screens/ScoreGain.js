@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import firebase from '../database/firebaseDB';
 import { StyleSheet, Text, View, Button, FlatList, TouchableOpacity, SafeAreaView, ImageBackground } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import Scoreboard from './ShowScore';
 
 const Score = ({ navigation, route }) => {
     
@@ -27,6 +28,7 @@ const Score = ({ navigation, route }) => {
             <Text> this is your time : {route.params.time}</Text>
             <TouchableOpacity onPress={() => navigation.navigate("Game")}><Text>Play Again</Text></TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate("Start")}><Text>Back</Text></TouchableOpacity>
+            <Scoreboard/>
         </View>
     )
 }
