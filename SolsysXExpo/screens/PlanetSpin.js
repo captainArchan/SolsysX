@@ -7,14 +7,15 @@ import { RenderRing } from '../render3D/renderRing';
 
 const PlanetSpin = ({ route, navigation }) => {
     const [speedTime, setSpeedTime] = useState(true);
+    console.log(route.params.rotate3d)
     return (
         <View style={{ flex: 1 }}>
             <Canvas style={{ flex: 1 }}>
                 <color attach="background" args={['#000000']} />
                 <ambientLight color={0xc6c1c1} intensity={3} />
                 <Suspense fallback={null}>
-                    {speedTime? <PlanetAndSpin name={route.params.name} tilted={route.params.tilted} rotate={route.params.rotate} />
-                    :<PlanetAndSpin name={route.params.name} tilted={route.params.tilted} rotate={route.params.rotate/60} />
+                    {speedTime? <PlanetAndSpin name={route.params.name} tilted={route.params.tilted} rotate={route.params.rotate3d} />
+                    :<PlanetAndSpin name={route.params.name} tilted={route.params.tilted} rotate={route.params.rotate3d/60} />
                     }
                     {/* <PlanetAndSpin name={route.params.name} tilted={route.params.tilted} rotate={route.params.rotate} /> */}
                 </Suspense>
@@ -26,7 +27,12 @@ const PlanetSpin = ({ route, navigation }) => {
             </Canvas>
             <View style={styles.about}>
             {/* <ImageBackground source={require('../assets/star.png')} style={{ flex: 1 }} resizeMode="cover"> */}
-                <Text style={styles.title}> {route.params.name} </Text>
+            <View style={{flexDirection: 'row'}}>
+                        <Text style={styles.title}> {route.params.name} </Text>
+                        <TouchableOpacity onPress={()=> speedTime? setSpeedTime(false): setSpeedTime(true)}>
+                            <Text style={styles.speed}>{speedTime? "Speed Up": "Slow Down"}</Text>
+                        </TouchableOpacity>
+                    </View>
                 <Text style={styles.content}>{route.params.about} </Text>
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("planetInfo", {
                     name: route.params.name,
@@ -41,6 +47,7 @@ const PlanetSpin = ({ route, navigation }) => {
                     rotate: route.params.rotate,
                     size: route.params.size,
                     colors: route.params.colors,
+                    rotate3d: route.params.rotate3d
                 })}>
                 <Text style={{color: '#fff', fontSize:22, fontWeight:'bold'}}>Explore</Text>
                 </TouchableOpacity>

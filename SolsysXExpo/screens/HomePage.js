@@ -30,7 +30,7 @@ const HomePage = ({ navigation }) => {
                         size: planet.data().size,
                         colors: planet.data().color,
                         tilted: planet.data().tilted,
-                        rotate: planet.data().day
+                        rotate3d: planet.data().day
                     })
                 })
                 setDataPlanet(data);
@@ -60,7 +60,7 @@ const HomePage = ({ navigation }) => {
                             colors: planet.item.colors,
                             rotate: planet.item.rotate,
                             tilted: planet.item.tilted,
-                            
+                            rotate3d: planet.item.rotate3d
                         })
                     }
                 }}
