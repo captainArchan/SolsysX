@@ -112,29 +112,33 @@ const Game = ({ navigation }) => {
 
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#000000' }}>
-            {/* <ImageBackground source={require('../assets/game.png')} resizeMode="cover" style={styles.imageBack}> */}
-            <View style={styles.questionContainer}>
-                <Text>
+        <View style={{ flex: 1 }}>
+            <ImageBackground source={require('../assets/game.png')} resizeMode="cover" style={styles.imageBack}>
+            <View style={styles.container}>
+                <View style={styles.time}>
+                <Text> <Timer time={timeOut} endgame={endgame} setTimer={setTimer}/> </Text>
+                </View>
+                <View>
+                <Text style={styles.question}>
                     {question}
                 </Text>
-                <TouchableOpacity onPress={() => handleAnswer(choices[0])}>
-                    <Text> {choices[0]} </Text>
+                <TouchableOpacity style={styles.button} onPress={() => handleAnswer(choices[0])}>
+                    <Text style={styles.textchoice}> {choices[0]} </Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => handleAnswer(choices[1])}>
-                    <Text> {choices[1]} </Text>
+                <TouchableOpacity style={styles.button} onPress={() => handleAnswer(choices[1])}>
+                    <Text style={styles.textchoice}> {choices[1]} </Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => handleAnswer(choices[2])}>
-                    <Text> {choices[2]} </Text>
+                <TouchableOpacity style={styles.button} onPress={() => handleAnswer(choices[2])}>
+                    <Text style={styles.textchoice}> {choices[2]} </Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => handleAnswer(choices[3])}>
-                    <Text> {choices[3]} </Text>
+                <TouchableOpacity style={styles.button} onPress={() => handleAnswer(choices[3])}>
+                    <Text style={styles.textchoice}> {choices[3]} </Text>
                 </TouchableOpacity>
-                <Text> {score} </Text>
-                <Text> <Timer time={timeOut} endgame={endgame} setTimer={setTimer}/> </Text>
+                <Text style={styles.score}>score: {score} </Text>
+                </View>
             </View>
-            {/* </ImageBackground> */}
-        </SafeAreaView>
+            </ImageBackground>
+        </View>
     );
 };
 
@@ -144,30 +148,40 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    questionContainer: {
+    question: {
+        color: '#ffff',
+        fontSize: 23,
+        padding: 20,
+        fontWeight: 'bold',
+        textAlign: 'center'
+    },
+    textchoice: {
+        color: '#ffffff',
+        fontSize: 16
+    },
+    button: {
+        alignItems: 'center',
+        backgroundColor: '#667A92',
         padding: 10,
         margin: 10,
-        borderRadius: 5,
-        backgroundColor: '#dddddd',
-        marginTop: 100,
-        alignItems: 'center',
-    },
-    optionStyle: {
-        color: 'green',
-        padding: 5,
-        alignSelf: 'center',
-        fontSize: 18
-    },
-    optionContainer: {
-        marginTop: 15
-    },
-    questionText: {
-        fontSize: 20
-    },
+        borderRadius:10
+      },
     imageBack: {
         flex: 1,
         justifyContent: 'center',
     },
+    score: {
+        color: "#ffffff",
+        margin:10,
+        fontSize:20,
+        textAlign: 'center',
+        fontWeight: 'bold'
+    },
+    time: {
+        backgroundColor: '#214973',
+        borderRadius:10,
+        padding: 10
+    }
 
 });
 

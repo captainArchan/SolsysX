@@ -22,7 +22,7 @@ const Drawer = createDrawerNavigator();
 function MyDrawer(){
     return(
         <Drawer.Navigator screenOptions={{ drawerActiveTintColor: "black", drawerInactiveTintColor: "gray", }}>
-        <Drawer.Screen name="Home" component={HomePage} options={{headerShown:false}}/>
+        <Drawer.Screen name="Planet" component={HomePage} options={{headerShown:false}}/>
         <Drawer.Screen name="Solar System" component={SolarSystem} options={{headerShown:false}}/>
         <Drawer.Screen name="Game" component={StartGame} options={{headerShown:false}}/>
         <Drawer.Screen name="Compare" component={Compare} options={{headerShown:false}}/>
