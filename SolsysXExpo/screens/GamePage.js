@@ -73,7 +73,7 @@ const Game = ({ navigation }) => {
         const ans = answer;
 
         if (ans === selectedAnswer) {
-            alert("right answer");
+            // alert("right answer");
             setScore(score + 1);
             const newIndex = index + 1;
             if (newIndex < quiz.length) {
@@ -87,7 +87,7 @@ const Game = ({ navigation }) => {
                 // คุณสามารถทำการนำผู้เล่นกลับไปหน้าเริ่มต้นหรือทำอะไรต่อได้ตามความต้องการ
             }
         } else {
-            alert("wrong answer");
+            // alert("wrong answer");
             const newIndex = index + 1;
             if (newIndex < quiz.length) {
                 setIndex(newIndex);
