@@ -95,8 +95,9 @@ const styles = StyleSheet.create({
         borderRadius: 15
     },
     speed:{
-        color: 'white',
+        color: '#9875BD',
         fontSize: 13,
+        fontWeight: 'bold'
     },
     buttonSpeed: {
         alignItems: 'flex-end',

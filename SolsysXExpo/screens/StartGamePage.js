@@ -27,17 +27,16 @@ const styles = StyleSheet.create({
       },
       text: {
         color: 'white',
-        fontSize: 60,
+        fontSize: 50,
         lineHeight: 84,
         fontWeight: 'bold',
         textAlign: 'center',
       },
       button: {
         alignItems: 'center',
-        backgroundColor: '#A546A0',
+        backgroundColor: '#234E7C',
         padding: 10,
-        margin: 20,
-     
+        margin: 60,
         borderRadius:10
       },
 })
