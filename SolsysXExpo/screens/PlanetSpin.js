@@ -26,12 +26,15 @@ const PlanetSpin = ({ route, navigation }) => {
             </Canvas>
             <View style={styles.about}>
             {/* <ImageBackground source={require('../assets/star.png')} style={{ flex: 1 }} resizeMode="cover"> */}
-            <View style={{flexDirection: 'row'}}>
-                        <Text style={styles.title}> {route.params.name} </Text>
-                        <TouchableOpacity onPress={()=> speedTime? setSpeedTime(false): setSpeedTime(true)}>
-                            <Text style={styles.speed}>{speedTime? "Speed Up": "Slow Down"}</Text>
-                        </TouchableOpacity>
-                    </View>
+            <TouchableOpacity style={styles.buttonSpeed} onPress={()=> speedTime? setSpeedTime(false): setSpeedTime(true)}>
+                <Text style={styles.speed}>{speedTime? "Speed Up": "Slow Down"}</Text>
+            </TouchableOpacity>
+            <View style={{flexDirection: 'row', marginHorizontal: 10}}>
+                    <Text style={styles.title}> {route.params.name} </Text>
+                    {/* <TouchableOpacity style={styles.buttonSpeed} onPress={()=> speedTime? setSpeedTime(false): setSpeedTime(true)}>
+                        <Text style={styles.speed}>{speedTime? "Speed Up": "Slow Down"}</Text>
+                    </TouchableOpacity> */}
+            </View>
                 <Text style={styles.content}>{route.params.about} </Text>
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("planetInfo", {
                     name: route.params.name,
@@ -78,20 +81,25 @@ const styles = StyleSheet.create({
         marginHorizontal: 30,
         margin: 10,
         fontSize: 16,
-        textAlign: 'center'
+        // textAlign: 'center'
     },
     button: {
         alignItems: 'center',
         backgroundColor: '#4B2849',
         padding: 10,
         margin: 20,
-        marginHorizontal: 110,
+        marginHorizontal: 30,
         borderRadius: 15
     },
     speed:{
         color: 'white',
-        
-    }
+        fontSize: 13,
+    },
+    buttonSpeed: {
+        alignItems: 'flex-end',
+        marginHorizontal: 50,
+        borderRadius: 10,
+    },
 })
 
 export default PlanetSpin;
