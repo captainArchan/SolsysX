@@ -53,8 +53,7 @@ const Game = ({ navigation }) => {
                 break;
             }
             else {
-                let random = Math.floor(Math.random() * 50);
-
+                let random = Math.floor(Math.random() * 49);
                     randNum.push(random)
 
 
@@ -75,7 +74,7 @@ const Game = ({ navigation }) => {
 
         if (ans === selectedAnswer) {
             alert("right answer");
-            setScore((prevScore) => prevScore + 1);
+            setScore(score + 1);
             const newIndex = index + 1;
             if (newIndex < quiz.length) {
                 setIndex(newIndex);
@@ -83,7 +82,7 @@ const Game = ({ navigation }) => {
                 
             } else {
                 alert("คุณเล่นเกมเสร็จสิ้น");
-                navigation.replace("ScoreGain", {score: score, time: time})
+                navigation.navigate("ScoreGain", {score: score, time: time})
                 setEndgame(true)
                 // คุณสามารถทำการนำผู้เล่นกลับไปหน้าเริ่มต้นหรือทำอะไรต่อได้ตามความต้องการ
             }
@@ -96,14 +95,14 @@ const Game = ({ navigation }) => {
             } else {
                 alert("คุณเล่นเกมเสร็จสิ้น");
                 setEndgame(true)
-                navigation.replace("ScoreGain", {score: score, time: time}, )
+                navigation.navigate("ScoreGain", {score: score, time: time}, )
                 // คุณสามารถทำการนำผู้เล่นกลับไปหน้าเริ่มต้นหรือทำอะไรต่อได้ตามความต้องการ
             }
         }
     }
 
     const timeOut = () => {
-        navigation.replace("ScoreGain", {score: score, checkTime: checkTime, time: time})
+        navigation.navigate("ScoreGain", {score: score, checkTime: checkTime, time: time})
     }
     const setTimer = (time) =>{
         setTime(time)

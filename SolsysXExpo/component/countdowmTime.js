@@ -14,9 +14,7 @@ const Timer = (props) => {
             if(props.endgame !== true){
                 alert("หมดเวลา");
                 props.time();
-                
             }
-            setTime(0)
         }
         return () => {
             clearInterval(interval);
