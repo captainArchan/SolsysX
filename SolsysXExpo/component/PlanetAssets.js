@@ -34,7 +34,12 @@ export const moonImage = {
     Titania: require('../assets/Uranus/moon/Titania.png'),
     Ariel: require('../assets/Uranus/moon/Ariel.png'),
     Oberon: require('../assets/Uranus/moon/Oberon.png'),
-    Triton: require('../assets/Neptune/moon/Triton.png')
+    Triton: require('../assets/Neptune/moon/Triton.png'),
+    Titan: require('../assets/Saturn/moon/Titan.png'),
+    Enceladus: require('../assets/Saturn/moon/Enceladus.png'),
+    Iapetus: require('../assets/Saturn/moon/Iapetus.png'),
+    Rhea: require('../assets/Saturn/moon/Rhea.png'),
+    Hyperion: require('../assets/Saturn/moon/Hyperion.png')
 }
 
 export const sizePlanet ={

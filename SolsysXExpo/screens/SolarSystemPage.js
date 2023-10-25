@@ -89,8 +89,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     imageSolsys: {
-        width: 320,
-        height:230,
+        width: 380,
+        height:280,
     },
     text: {
         color: '#ffffff',
@@ -111,8 +111,8 @@ const styles = StyleSheet.create({
         fontSize: 16
     },
     imagePlanet: {
-        width: 300,
-        height:200,
+        width: 390,
+        height:270,
     },
     textPlanet: {
         color: '#ffffff',
@@ -136,6 +136,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
         marginBottom:20
+    },
+    icon: {
+        margin: 15
     }
 })
 
