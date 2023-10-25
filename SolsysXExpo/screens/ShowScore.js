@@ -41,12 +41,20 @@ const Scoreboard = () => {
     return (
       <View>
         {scoreData.map((item, i) => (
-          <Text key={i}>
-            {item.score} {item.time}
+          <Text style={styles.text} key={i}>
+           Score: {item.score}    Time: {item.time} sec
           </Text>
         ))}
       </View>
     );
   };
   
+  const styles = StyleSheet.create({
+    text: {
+      color: '#ffff',
+      fontSize: 20,
+      textAlign: 'center',
+      padding:5
+    }
+  })
   export default Scoreboard;

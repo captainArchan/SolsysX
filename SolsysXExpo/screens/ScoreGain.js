@@ -23,22 +23,23 @@ const Score = ({ navigation, route }) => {
     }
 
     return (
-<<<<<<< HEAD
-        <View style={[styles.container]}>
-            <Text> this is your score : {route.params.score}</Text>
-            <Text> this is your time : {route.params.time}</Text>
-            <TouchableOpacity onPress={() => navigation.navigate("Game")}><Text>Play Again</Text></TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate("Start")}><Text>Back</Text></TouchableOpacity>
-            <Scoreboard/>
-=======
+        // <View style={[styles.container]}>
+        //     <Text> this is your score : {route.params.score}</Text>
+        //     <Text> this is your time : {route.params.time}</Text>
+        //     <TouchableOpacity onPress={() => navigation.navigate("Game")}><Text>Play Again</Text></TouchableOpacity>
+        //     <TouchableOpacity onPress={() => navigation.navigate("Start")}><Text>Back</Text></TouchableOpacity>
+        //     <Scoreboard/>
         <View style={{flex:1}}>
             <ImageBackground source={require('../assets/game.png')} resizeMode="cover" style={styles.imageBack}>
             <Text style={styles.text}>Score : {route.params.score}</Text>
             <Text style={styles.text}>Time : {route.params.time}</Text>
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Game")}><Text style={styles.textButton}>Play Again</Text></TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Planet")}><Text style={styles.textButton}>Back</Text></TouchableOpacity>
+            <View style={styles.containerBox}>
+            <Text style={styles.best}>Best Score</Text>
+            <Scoreboard/>
+            </View>
             </ImageBackground>
->>>>>>> c13fe49eefc87b2872ee676195099e8a83ae1c07
         </View>
     )
 }
@@ -71,6 +72,19 @@ const styles = StyleSheet.create({
     textButton: {
         color: '#ffffff',
         fontWeight: 'bold',
+    },
+    best: {
+        fontSize: 30,
+        color: '#ffff',
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginTop:10
+    },
+    containerBox: {
+        backgroundColor: '#744833',
+        padding: 3,
+        margin:10,
+        borderRadius: 10
     }
 })
 export default Score;
