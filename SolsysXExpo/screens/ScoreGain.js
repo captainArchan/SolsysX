@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import firebase from '../database/firebaseDB';
 import { StyleSheet, Text, View, Button, FlatList, TouchableOpacity, SafeAreaView, ImageBackground } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import Scoreboard from './ShowScore';
 
 const Score = ({ navigation, route }) => {
     
@@ -22,6 +23,14 @@ const Score = ({ navigation, route }) => {
     }
 
     return (
+<<<<<<< HEAD
+        <View style={[styles.container]}>
+            <Text> this is your score : {route.params.score}</Text>
+            <Text> this is your time : {route.params.time}</Text>
+            <TouchableOpacity onPress={() => navigation.navigate("Game")}><Text>Play Again</Text></TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Start")}><Text>Back</Text></TouchableOpacity>
+            <Scoreboard/>
+=======
         <View style={{flex:1}}>
             <ImageBackground source={require('../assets/game.png')} resizeMode="cover" style={styles.imageBack}>
             <Text style={styles.text}>Score : {route.params.score}</Text>
@@ -29,6 +38,7 @@ const Score = ({ navigation, route }) => {
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Game")}><Text style={styles.textButton}>Play Again</Text></TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Planet")}><Text style={styles.textButton}>Back</Text></TouchableOpacity>
             </ImageBackground>
+>>>>>>> c13fe49eefc87b2872ee676195099e8a83ae1c07
         </View>
     )
 }
