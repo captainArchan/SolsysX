@@ -74,10 +74,20 @@ const Game = ({ navigation }) => {
                 quizHandler(quiz, newIndex);
             } else {
                 alert("คุณเล่นเกมเสร็จสิ้น");
+                navigation.navigate("ScoreGain", {score: score})
                 // คุณสามารถทำการนำผู้เล่นกลับไปหน้าเริ่มต้นหรือทำอะไรต่อได้ตามความต้องการ
             }
         } else {
-            alert("try again");
+            alert("wrong answer");
+            const newIndex = index + 1;
+            if (newIndex < quiz.length) {
+                setIndex(newIndex);
+                quizHandler(quiz, newIndex);
+            } else {
+                alert("คุณเล่นเกมเสร็จสิ้น");
+                navigation.navigate("ScoreGain", {score: score})
+                // คุณสามารถทำการนำผู้เล่นกลับไปหน้าเริ่มต้นหรือทำอะไรต่อได้ตามความต้องการ
+            }
         }
     }
 
@@ -88,21 +98,6 @@ const Game = ({ navigation }) => {
                 <Text>
                     {question}
                 </Text>
-                {/* <Text>
-                    {answer}
-                </Text>
-                <Text>
-                    {choices[0]}
-                </Text>
-                <Text>
-                    {choices[1]}
-                </Text>
-                <Text>
-                    {choices[2]}
-                </Text>
-                <Text>
-                    {choices[3]}
-                </Text> */}
                 <TouchableOpacity onPress={() => handleAnswer(choices[0])}>
                     <Text> {choices[0]} </Text>
                 </TouchableOpacity>
@@ -115,7 +110,7 @@ const Game = ({ navigation }) => {
                 <TouchableOpacity onPress={() => handleAnswer(choices[3])}>
                     <Text> {choices[3]} </Text>
                 </TouchableOpacity>
-                <Text> {index} </Text>
+                <Text> {score} </Text>
             </View>
             {/* </ImageBackground> */}
         </SafeAreaView>
