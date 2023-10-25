@@ -1,9 +1,9 @@
 import { Button, StyleSheet, Text, View } from "react-native";
 
-export default function StartGame({navigation}){
+const StartGame = ({navigation}) => {
     return(
         <View style={styles.container}>
-            <Button title="Start" onPress={()=> navigation.navigate("Game")}/>
+            <Button title="Start" onPress={()=> navigation.navigate("GamePage")}/>
         </View>
     )
 }
@@ -13,3 +13,5 @@ const styles = StyleSheet.create({
         paddingTop: 100
     }
 })
+
+export default StartGame;
