@@ -25,8 +25,8 @@ const Score = ({ navigation, route }) => {
         <View style={[styles.container]}>
             <Text> this is your score : {route.params.score}</Text>
             <Text> this is your time : {route.params.time}</Text>
-            <TouchableOpacity onPress={() => navigation.navigate("Game")}><Text>Play Again</Text></TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate("Start")}><Text>Back</Text></TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.replace("Game")}><Text>Play Again</Text></TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.replace("Start")}><Text>Back</Text></TouchableOpacity>
         </View>
     )
 }
