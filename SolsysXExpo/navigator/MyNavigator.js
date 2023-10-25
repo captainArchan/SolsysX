@@ -12,6 +12,7 @@ import PlanetSpin from "../screens/PlanetSpin";
 import PlanetInfo from "../screens/PlanetInfo";
 import Model from "../screens/ModelPage";
 import SolarSystem from "../screens/SolarSystemPage";
+import Score from "../screens/ScoreGain";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -35,7 +36,8 @@ export default function MyNavigator() {
                 <Stack.Screen name="Home" component={MyDrawer} options={{headerShown:false}}/>
                 <Stack.Screen name="planetSpin" component={PlanetSpin} options={{headerTitle: '', headerStyle: {backgroundColor: '#000000'}, headerTintColor: "white"}}/>
                 <Stack.Screen name="planetInfo" component={PlanetInfo} options={{headerTitle: '', headerStyle: {backgroundColor: '#000000'}, headerTintColor: "white"}}/>
-
+                <Stack.Screen name="ScoreGain" component={Score} options={{headerShown: false}} />
+                <Stack.Screen name="GamePage" component={Game} options={{headerShown: false}} />
             </Stack.Navigator>
         </NavigationContainer>
     )
