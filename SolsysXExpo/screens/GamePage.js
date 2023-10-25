@@ -10,51 +10,66 @@ const Game = ({ navigation }) => {
     const [score, setScore] = useState(0);
     const [answer, setAnswer] = useState(0);
     const [numberQuiz, setNumberQuiz] = useState([]); // เอาไว้เก็บเลขข้อ แล้วเอาไปเช็คในwhileว่าซ้ำไหม ถ้าซ้ำก็สุ่มใหม่
+    let allQuiz = [];
+    const [index,setIndex] = useState(0);
+    const [quiz,setQuiz] = useState([]);
     useEffect(() => {
         const asyncFn = async () => {
-            let number = getRandomInt(20);
-            let check = false
-            while(!check){
-                if((numberQuiz.findIndex((element) =>  element == number)) == -1){
-                    setNumberQuiz(prevNumber => [...prevNumber, number]);
-                    check = true;
-                }else{
-                    number = getRandomInt(20);
-                }
-            }
-            const fireb = await quizCollection.get();
+            let number = getRandomInt();
+            console.log(number)
+            setNumberQuiz(number)
             const all_id = [];
+            const fireb = await quizCollection.get()
             fireb.forEach(element => {
                 all_id.push({
                     id: element.id
                 })
             }); // เอาข้อมูล id คำถามมาใส่ใน all_id
-            const quiz = await quizCollection.doc(all_id[number].id).get(); // getตามid ที่ได้
-            setChoices(quiz.data().choice)
-            setQuestion(quiz.data().question)
-            setAnswer(quiz.data().answer)
+            for (let i = 0; i < number.length; i++){
+                allQuiz.push(await quizCollection.doc(all_id[number[i]].id).get())
+            }
+            // const quiz = await quizCollection.doc(all_id[number].id).get(); // getตามid ที่ได้
+
+            // const quizHandler = () => {
+            //     setChoices(allQuiz[0].data().choice)
+            //     setQuestion(allQuiz[0].data().question)
+            //     setAnswer(allQuiz[0].data().answer)
+            // }
+            quizHandler(allQuiz,index)
+            setQuiz(allQuiz)
+            console.log(allQuiz[0])
+            
         };
         asyncFn()
     }, []);
-    function getRandomInt(max) {
-        return Math.floor(Math.random() * max);
+    function getRandomInt() {
+        let randNum = [];
+        while(true) {
+            if (randNum.length == 5) {
+                break;
+            }
+            else {
+                let random = Math.floor(Math.random() * 50);
+                randNum.push(random)
+            }
+        }
+        return randNum
     }
-    const randomQuestion = () => {
-        console.log(quizData)
-        const randomQuiz = quizData[Math.floor(Math.random() * quizData.length)];
-        console.log(randomQuiz);
-        setQuestion(randomQuiz.question);
-        setChoices(randomQuiz.choice);
-        setAnswer(randomQuiz.answer)
+
+    const quizHandler = (allQuiz,index) => {
+        console.log(allQuiz)
+        setChoices(allQuiz[index].data().choice)
+        setQuestion(allQuiz[index].data().question)
+        setAnswer(allQuiz[index].data().answer)
     }
 
     const handleAnswer = (selectedAnswer) => {
         const ans = answer;
         if (ans === selectedAnswer) {
-            console.log(score)
             alert("right answer")
             setScore((prevScore) => prevScore + 1)
-            console.log(score)
+            setIndex(index + 1)
+            quizHandler(quiz,index)
         } else (
             alert("try again")
         )
@@ -67,7 +82,7 @@ const Game = ({ navigation }) => {
                 <Text>
                     {question}
                 </Text>
-                <Text>
+                {/* <Text>
                     {answer}
                 </Text>
                 <Text>
@@ -81,7 +96,20 @@ const Game = ({ navigation }) => {
                 </Text>
                 <Text>
                     {choices[3]}
-                </Text>
+                </Text> */}
+                <TouchableOpacity onPress={() => handleAnswer(choices[0])}>
+                    <Text> {choices[0]} </Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => handleAnswer(choices[1])}>
+                    <Text> {choices[1]} </Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => handleAnswer(choices[2])}>
+                    <Text> {choices[2]} </Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => handleAnswer(choices[3])}>
+                    <Text> {choices[3]} </Text>
+                </TouchableOpacity>
+                <Text> {index} </Text>
             </View>
             {/* </ImageBackground> */}
         </SafeAreaView>
@@ -99,6 +127,8 @@ const styles = StyleSheet.create({
         margin: 10,
         borderRadius: 5,
         backgroundColor: '#dddddd',
+        marginTop: 100,
+        alignItems: 'center',
     },
     optionStyle: {
         color: 'green',
