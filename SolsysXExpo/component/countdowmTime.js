@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
 const Timer = (props) => {
-    const [time, setTime] = useState(30); // 25 minutes in seconds
+    const [time, setTime] = useState(63); // 25 minutes in seconds
     useEffect(() => {
         let interval = null;
         if (time > 0 ) {
@@ -28,9 +28,8 @@ const Timer = (props) => {
         return `${remainingSeconds.toString().padStart(2, '0')}`;
     };
     return (
-        <View style={styles.container}>
             <Text style={styles.timer}>{formatTime(time)}</Text>
-        </View>
+
     );
 };
 
@@ -41,8 +40,9 @@ const styles = StyleSheet.create({
       alignItems: 'center',
     },
     timer: {
-      fontSize: 60,
+      fontSize: 50,
       fontWeight: 'bold',
+      color: '#ffffff'
     },
   });
   
