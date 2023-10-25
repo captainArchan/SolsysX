@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import firebase from '../database/firebaseDB';
 import { StyleSheet, Text, View, Button, FlatList, TouchableOpacity, SafeAreaView, ImageBackground } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import Timer from '../component/countdowmTime';
 
 const Game = ({ navigation }) => {
+    
     const [question, setQuestion] = useState(null);
     const [choices, setChoices] = useState({});
     const quizCollection = firebase.firestore().collection('game');
@@ -13,6 +15,9 @@ const Game = ({ navigation }) => {
     let allQuiz = [];
     const [index,setIndex] = useState(0);
     const [quiz,setQuiz] = useState([]);
+    const [time, setTime] = useState(25); // 25 minutes in seconds
+    const [checkTime,setCheckTime] = useState(false);
+
     useEffect(() => {
         const asyncFn = async () => {
             let number = getRandomInt();
@@ -64,6 +69,9 @@ const Game = ({ navigation }) => {
     }
 
     const handleAnswer = (selectedAnswer) => {
+        if (checkTime === true) {
+            navigation.navigate("ScoreGain", {score: score, checkTime: checkTime})
+        }
         const ans = answer;
         if (ans === selectedAnswer) {
             alert("right answer");
@@ -91,6 +99,11 @@ const Game = ({ navigation }) => {
         }
     }
 
+    const timeOut = () => {
+        setCheckTime(true);
+        handleAnswer(null)
+    }
+
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#000000' }}>
             {/* <ImageBackground source={require('../assets/game.png')} resizeMode="cover" style={styles.imageBack}> */}
@@ -111,6 +124,7 @@ const Game = ({ navigation }) => {
                     <Text> {choices[3]} </Text>
                 </TouchableOpacity>
                 <Text> {score} </Text>
+                <Text> <Timer time={timeOut}/> </Text>
             </View>
             {/* </ImageBackground> */}
         </SafeAreaView>
