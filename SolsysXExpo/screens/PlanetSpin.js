@@ -7,6 +7,7 @@ import { RenderRing } from '../render3D/renderRing';
 
 const PlanetSpin = ({ route, navigation }) => {
     const [speedTime, setSpeedTime] = useState(true);
+    console.log(route.params.name)
     return (
         <View style={{ flex: 1 }}>
             <Canvas style={{ flex: 1 }}>
