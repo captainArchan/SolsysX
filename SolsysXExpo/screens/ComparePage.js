@@ -25,9 +25,6 @@ const Compare = ({ navigation, route }) => {
     const size1 = planet1 ? sizePlanet[planet1] : 0;
     const size2 = planet2 ? sizePlanet[planet2] : 0;
     const scalePlanet = findRadius(size1, size2);
-    console.log(data.rotate)
-    
-
     return (
         <View style={styles.container}>
             <SafeAreaView>

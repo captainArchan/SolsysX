@@ -4,7 +4,7 @@ import { StyleSheet, Text, ImageBackground, TouchableOpacity, View, SafeAreaView
 import PlanetList from '../component/PlanetList';
 import { Feather } from '@expo/vector-icons';
 import firebase from '../database/firebaseDB';
-
+import Timer from '../component/countdowmTime';
 const HomePage = ({ navigation }) => {
     const planetCollection = firebase.firestore().collection("planet");
     const [dataPlanet, setDataPlanet] = useState([]);
