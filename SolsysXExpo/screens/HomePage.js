@@ -30,7 +30,7 @@ const HomePage = ({ navigation }) => {
                         size: planet.data().size,
                         colors: planet.data().color,
                         tilted: planet.data().tilted,
-                        rotate: planet.data().day
+                        rotate3d: planet.data().day
                     })
                 })
                 setDataPlanet(data);
@@ -60,7 +60,7 @@ const HomePage = ({ navigation }) => {
                             colors: planet.item.colors,
                             rotate: planet.item.rotate,
                             tilted: planet.item.tilted,
-                            
+                            rotate3d: planet.item.rotate3d
                         })
                     }
                 }}
@@ -70,7 +70,7 @@ const HomePage = ({ navigation }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#000000' }}>
- <ImageBackground source={require('../assets/star.png')} style={{ flex: 1 }} resizeMode="cover">
+            <ImageBackground source={require('../assets/star.png')} style={{ flex: 1 }} resizeMode="cover">
             <Feather style={styles.icon} name="menu" size={24} color="white" onPress={() => navigation.openDrawer()} />
             <ScrollView>
                 <View style={styles.title}>
@@ -84,7 +84,7 @@ const HomePage = ({ navigation }) => {
                     keyExtractor={item => item.name}
                 />
             </ScrollView>
-</ImageBackground>
+            </ImageBackground>
         </SafeAreaView>
     );
 }
