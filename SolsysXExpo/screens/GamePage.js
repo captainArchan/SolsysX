@@ -83,7 +83,7 @@ const Game = ({ navigation }) => {
                 
             } else {
                 alert("คุณเล่นเกมเสร็จสิ้น");
-                navigation.navigate("ScoreGain", {score: score, time: time})
+                navigation.replace("ScoreGain", {score: score, time: time})
                 setEndgame(true)
                 // คุณสามารถทำการนำผู้เล่นกลับไปหน้าเริ่มต้นหรือทำอะไรต่อได้ตามความต้องการ
             }
@@ -96,14 +96,14 @@ const Game = ({ navigation }) => {
             } else {
                 alert("คุณเล่นเกมเสร็จสิ้น");
                 setEndgame(true)
-                navigation.navigate("ScoreGain", {score: score, time: time}, )
+                navigation.replace("ScoreGain", {score: score, time: time}, )
                 // คุณสามารถทำการนำผู้เล่นกลับไปหน้าเริ่มต้นหรือทำอะไรต่อได้ตามความต้องการ
             }
         }
     }
 
     const timeOut = () => {
-        navigation.navigate("ScoreGain", {score: score, checkTime: checkTime, time: time})
+        navigation.replace("ScoreGain", {score: score, checkTime: checkTime, time: time})
     }
     const setTimer = (time) =>{
         setTime(time)
