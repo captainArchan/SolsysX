@@ -4,6 +4,23 @@ import { StyleSheet, Text, View, Button, FlatList, TouchableOpacity, SafeAreaVie
 import { Feather } from '@expo/vector-icons';
 
 const Score = ({ navigation, route }) => {
+    
+    const score = firebase.firestore().collection('score');
+    useEffect(() => {
+        const saveScore = () => {
+            storeSubject()
+        }
+        saveScore()
+    }, []);
+    
+
+    const storeSubject = () => {
+        score.add({
+            score: route.params.score,
+            time: 10
+        })
+    }
+
     return (
         <View style={[styles.container]}>
             <Text> this is your score : {route.params.score}</Text>
