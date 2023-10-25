@@ -5,7 +5,6 @@ import { TextureLoader } from "three/src/loaders/TextureLoader";
 
 
 export function RenderRing(props) {
-    console.log(props.name)
     const createRing = () => {
         const mesh = useRef();
         useFrame((state, delta) => {

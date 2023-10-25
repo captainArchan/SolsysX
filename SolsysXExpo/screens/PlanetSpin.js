@@ -7,7 +7,9 @@ import { RenderRing } from '../render3D/renderRing';
 
 const PlanetSpin = ({ route, navigation }) => {
     const [speedTime, setSpeedTime] = useState(true);
-    console.log(route.params.name)
+    console.log("name: "+ route.params.name)
+    console.log("Tiled: "+ route.params.tilted)
+    console.log("rotate: "+ route.params.rotate3d)
     return (
         <View style={{ flex: 1 }}>
             <Canvas style={{ flex: 1 }}>
@@ -19,11 +21,11 @@ const PlanetSpin = ({ route, navigation }) => {
                     }
                     {/* <PlanetAndSpin name={route.params.name} tilted={route.params.tilted} rotate={route.params.rotate} /> */}
                 </Suspense>
-                <RenderRing name={route.params.name} position={[0, 0.3, 0]} args={[2.2, 2.4, 30]} color={'#655f45'} />
-                <RenderRing name={route.params.name} position={[0, 0.3, 0]} args={[2.4, 2.5, 30]} color={'#d8ae6d'} />
-                <RenderRing name={route.params.name} position={[0, 0.3, 0]} args={[2.5, 2.6, 30]} color={'#ffe1ab'} />
-                <RenderRing name={route.params.name} position={[0, 0.3, 0]} args={[2.6, 2.7, 30]} color={'#dbb57c'} />
-                <RenderRing name={route.params.name} position={[0, 0.3, 0]} args={[2.7, 2.8, 30]} color={'#b89c72'} />
+                <RenderRing name={route.params.name} position={[0, 1.5, 0]} args={[2.6, 2.8, 30]} color={'#655f45'} />
+                <RenderRing name={route.params.name} position={[0, 1.5, 0]} args={[2.9, 3.1, 30]} color={'#d8ae6d'} />
+                <RenderRing name={route.params.name} position={[0, 1.5, 0]} args={[3.1, 3.2, 30]} color={'#ffe1ab'} />
+                <RenderRing name={route.params.name} position={[0, 1.5, 0]} args={[3.2, 3.4, 30]} color={'#dbb57c'} />
+                <RenderRing name={route.params.name} position={[0, 1.5, 0]} args={[3.4, 3.6, 30]} color={'#b89c72'} />
             </Canvas>
             <View style={styles.about}>
             {/* <ImageBackground source={require('../assets/star.png')} style={{ flex: 1 }} resizeMode="cover"> */}

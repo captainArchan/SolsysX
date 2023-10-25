@@ -6,7 +6,6 @@ import { TextureLoader } from 'expo-three'
 import { planetTexture } from '../component/PlanetAssets';
 
 export function PlanetAndSpin(props) {
-    console.log(props.rotate)
     const textturePlanet = planetTexture[props.name];
     const tilted = props.tilted * Math.PI / 180; // องศา
     // const tilted = 112 * Math.PI / 180; // องศา
@@ -37,11 +36,8 @@ export function PlanetAndSpin(props) {
     useFrame((state, delta) => {
 
         mesh.current.rotation.y += degreePerMinute
-        // console.log((mesh.current.rotation.y *180/Math.PI)%360)
         mesh.current.rotation.x = tilted
-        // mesh.current.rotation.x += 0.0027
-        // console.log((mesh.current.rotation.x /Math.PI *180)%360)
-        // console.log(mesh.current.rotation.x/Math.PI *180)
+
 
     })
 

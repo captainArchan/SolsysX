@@ -34,13 +34,16 @@ const PlanetInfo = ({route, planet, navigation}) => {
                         ring: planet.data().ring,
                         rotate: planet.data().rotate,
                         size: planet.data().size,
-                        colors: planet.data().color
+                        colors: planet.data().color,
+                        tilted: planet.data().tilted,
+                        rotate3d: planet.data().day
                     })
                 })
                 setDataPlanet(data);
             })
         );
     }, [])
+
     const renderPlanet = (planet) => {
         return (
             <PlanetList
@@ -61,12 +64,16 @@ const PlanetInfo = ({route, planet, navigation}) => {
                             rotate: planet.item.rotate,
                             size: planet.item.size,
                             colors: planet.item.colors,
+                            tilted: planet.item.tilted,
+                            rotate3d: planet.item.rotate3d
+                            
                         })
                     }
                 }}
             />
         )
     }
+    
     const currentPlanetName = route.params.name;
     const filteredPlanets = dataPlanet.filter(planet => planet.name !== currentPlanetName);
     const randomPlanets = [];
