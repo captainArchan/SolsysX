@@ -51,7 +51,7 @@ const PlanetInfo = ({route, planet, navigation}) => {
                 colors={planet.item.colors}
                 onSelect={() => {
                     {
-                        navigation.navigate("planetSpin", {
+                        navigation.replace("planetSpin", {
                             name: planet.item.name,
                             about: planet.item.about,
                             atmosphere: planet.item.atmosphere,

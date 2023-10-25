@@ -5,7 +5,8 @@ import { Feather } from '@expo/vector-icons';
 import Timer from '../component/countdowmTime';
 
 const Game = ({ navigation }) => {
-    
+    const [endgame, setEndgame] = useState(false);
+    const [time, setTime] = useState(0);
     const [question, setQuestion] = useState(null);
     const [choices, setChoices] = useState({});
     const quizCollection = firebase.firestore().collection('game');
@@ -15,14 +16,12 @@ const Game = ({ navigation }) => {
     let allQuiz = [];
     const [index,setIndex] = useState(0);
     const [quiz,setQuiz] = useState([]);
-    const [time, setTime] = useState(25); // 25 minutes in seconds
-    const [checkTime,setCheckTime] = useState(false);
 
+    const [checkTime,setCheckTime] = useState(false);
+    
     useEffect(() => {
         const asyncFn = async () => {
             let number = getRandomInt();
-            console.log(number)
-            setNumberQuiz(number)
             const all_id = [];
             const fireb = await quizCollection.get()
             fireb.forEach(element => {
@@ -55,7 +54,10 @@ const Game = ({ navigation }) => {
             }
             else {
                 let random = Math.floor(Math.random() * 50);
-                randNum.push(random)
+
+                    randNum.push(random)
+
+
             }
         }
         return randNum
@@ -69,10 +71,8 @@ const Game = ({ navigation }) => {
     }
 
     const handleAnswer = (selectedAnswer) => {
-        if (checkTime === true) {
-            navigation.navigate("ScoreGain", {score: score, checkTime: checkTime})
-        }
         const ans = answer;
+
         if (ans === selectedAnswer) {
             alert("right answer");
             setScore((prevScore) => prevScore + 1);
@@ -80,9 +80,11 @@ const Game = ({ navigation }) => {
             if (newIndex < quiz.length) {
                 setIndex(newIndex);
                 quizHandler(quiz, newIndex);
+                
             } else {
                 alert("คุณเล่นเกมเสร็จสิ้น");
-                navigation.navigate("ScoreGain", {score: score})
+                navigation.navigate("ScoreGain", {score: score, time: time})
+                setEndgame(true)
                 // คุณสามารถทำการนำผู้เล่นกลับไปหน้าเริ่มต้นหรือทำอะไรต่อได้ตามความต้องการ
             }
         } else {
@@ -93,16 +95,21 @@ const Game = ({ navigation }) => {
                 quizHandler(quiz, newIndex);
             } else {
                 alert("คุณเล่นเกมเสร็จสิ้น");
-                navigation.navigate("ScoreGain", {score: score})
+                setEndgame(true)
+                navigation.navigate("ScoreGain", {score: score, time: time}, )
                 // คุณสามารถทำการนำผู้เล่นกลับไปหน้าเริ่มต้นหรือทำอะไรต่อได้ตามความต้องการ
             }
         }
     }
 
     const timeOut = () => {
-        setCheckTime(true);
-        handleAnswer(null)
+        navigation.navigate("ScoreGain", {score: score, checkTime: checkTime, time: time})
     }
+    const setTimer = (time) =>{
+        setTime(time)
+    }
+
+
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#000000' }}>
@@ -124,7 +131,7 @@ const Game = ({ navigation }) => {
                     <Text> {choices[3]} </Text>
                 </TouchableOpacity>
                 <Text> {score} </Text>
-                <Text> <Timer time={timeOut}/> </Text>
+                <Text> <Timer time={timeOut} endgame={endgame} setTimer={setTimer}/> </Text>
             </View>
             {/* </ImageBackground> */}
         </SafeAreaView>

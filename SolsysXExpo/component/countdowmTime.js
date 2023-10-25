@@ -2,18 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
 const Timer = (props) => {
-    const [time, setTime] = useState(3); // 25 minutes in seconds
-
+    const [time, setTime] = useState(30); // 25 minutes in seconds
     useEffect(() => {
         let interval = null;
-
-        if (time > 0) {
+        if (time > 0 ) {
             interval = setInterval(() => {
                 setTime((prevTime) => prevTime - 1);
+                props.setTimer((prevTimer) => prevTimer + 1)
             }, 1000);
         }else{
-            alert("หมดเวลา")
-            props.time();
+            if(props.endgame !== true){
+                alert("หมดเวลา");
+                props.time();
+            }
         }
         return () => {
             clearInterval(interval);

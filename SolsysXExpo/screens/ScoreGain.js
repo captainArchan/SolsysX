@@ -17,13 +17,14 @@ const Score = ({ navigation, route }) => {
     const storeSubject = () => {
         score.add({
             score: route.params.score,
-            time: 10
+            time: route.params.time
         })
     }
 
     return (
         <View style={[styles.container]}>
             <Text> this is your score : {route.params.score}</Text>
+            <Text> this is your time : {route.params.time}</Text>
             <TouchableOpacity onPress={() => navigation.navigate("Game")}><Text>Play Again</Text></TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate("Start")}><Text>Back</Text></TouchableOpacity>
         </View>
