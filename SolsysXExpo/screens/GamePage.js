@@ -66,13 +66,19 @@ const Game = ({ navigation }) => {
     const handleAnswer = (selectedAnswer) => {
         const ans = answer;
         if (ans === selectedAnswer) {
-            alert("right answer")
-            setScore((prevScore) => prevScore + 1)
-            setIndex(index + 1)
-            quizHandler(quiz,index)
-        } else (
-            alert("try again")
-        )
+            alert("right answer");
+            setScore((prevScore) => prevScore + 1);
+            const newIndex = index + 1;
+            if (newIndex < quiz.length) {
+                setIndex(newIndex);
+                quizHandler(quiz, newIndex);
+            } else {
+                alert("คุณเล่นเกมเสร็จสิ้น");
+                // คุณสามารถทำการนำผู้เล่นกลับไปหน้าเริ่มต้นหรือทำอะไรต่อได้ตามความต้องการ
+            }
+        } else {
+            alert("try again");
+        }
     }
 
     return (
