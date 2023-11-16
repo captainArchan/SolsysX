@@ -69,31 +69,31 @@ const Game = ({ navigation }) => {
         setAnswer(allQuiz[index].data().answer)
     }
 
-    const handleAnswer = (selectedAnswer) => {
+    const handleAnswer =async (selectedAnswer) => {
         const ans = answer;
 
         if (ans === selectedAnswer) {
             // alert("right answer");
-            setScore(score + 1);
             const newIndex = index + 1;
+            setScore(score+1)
             if (newIndex < quiz.length) {
                 setIndex(newIndex);
                 quizHandler(quiz, newIndex);
                 
             } else {
-                alert("คุณเล่นเกมเสร็จสิ้น");
-                navigation.navigate("ScoreGain", {score: score, time: time})
+                // alert("คุณเล่นเกมเสร็จสิ้น");
+                navigation.navigate("ScoreGain", {score: score+1, time: time})
                 setEndgame(true)
                 // คุณสามารถทำการนำผู้เล่นกลับไปหน้าเริ่มต้นหรือทำอะไรต่อได้ตามความต้องการ
             }
         } else {
-            // alert("wrong answer");
+
             const newIndex = index + 1;
             if (newIndex < quiz.length) {
                 setIndex(newIndex);
                 quizHandler(quiz, newIndex);
             } else {
-                alert("คุณเล่นเกมเสร็จสิ้น");
+                // alert("คุณเล่นเกมเสร็จสิ้น");
                 setEndgame(true)
                 navigation.navigate("ScoreGain", {score: score, time: time}, )
                 // คุณสามารถทำการนำผู้เล่นกลับไปหน้าเริ่มต้นหรือทำอะไรต่อได้ตามความต้องการ
@@ -133,7 +133,6 @@ const Game = ({ navigation }) => {
                 <TouchableOpacity style={styles.button} onPress={() => handleAnswer(choices[3])}>
                     <Text style={styles.textchoice}> {choices[3]} </Text>
                 </TouchableOpacity>
-                <Text style={styles.score}>score: {score} </Text>
                 </View>
             </View>
             </ImageBackground>
